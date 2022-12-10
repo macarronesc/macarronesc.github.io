@@ -1,0 +1,145 @@
+/* Define general styles for the page */
+body {
+    font-family: sans-serif;   /* Use a sans-serif font for the body text */
+    background-color: #f3f3f3;  /* Set a light gray background color */
+}
+
+h1 {
+    text-align: center;        /* Center the h1 element */
+    margin-bottom: 20px;       /* Add a margin at the bottom */
+}
+
+/* Create a flex container with column orientation and align its items to the left.
+   Center the container horizontally and set its width to 80%. */
+.company-container {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
+    width: 80%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+/* Create a flex container that aligns its items to the center */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Set the height and width of an element, add a margin to the right, and set a background image */
+.logo {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    background-image: url("bitcoin.png");
+    background-size: cover;
+}
+
+/* Set the font weight of an element to bold */
+.name {
+    font-weight: bold;
+}
+
+/* Set the font size, color, and margin of an element */
+.abbreviation {
+    font-size: 12px;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* Style the .description element with a bottom margin and border, and a bottom padding */
+.description {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+/* Style the .price-history element with a bottom margin and bold font weight */
+.price-history {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style the .price-container element to use flexbox and align its items in the center, and set a bottom margin */
+.price-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Style the .price element with a right margin */
+.price {
+  margin-right: 5px;
+}
+
+/* Style the .euro-symbol element with a font size and color */
+.euro-symbol {
+  font-size: 14px;
+}
+
+/* Style the .last-update element with a font size and color */
+.last-update {
+  font-size: 12px;
+  color: #999;
+}
+
+.transactions_title{
+  margin-top: 75px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style the .transactions-container element with a display of flex and a flex-direction of column */
+.transactions-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the .transaction-container element with a display of flex and a flex-direction of row */
+.transaction-container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Style the .time_title, .amount_title, and .euro-amount_title elements with a width of 33% */
+.time_title, .amount_title, .euro-amount_title {
+  width: 33%;
+  padding-top: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  color: rgb(105, 113, 132);
+}
+
+/* Style the .time, .amount, and .euro-amount elements with a width of 33% */
+.time, .amount, .euro-amount {
+  padding-top: 20px;
+  width: 33%;
+}
+
+/* Style the .button element with a height and width of 50px, a border-radius of 50%, and a background color */
+.button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #f3f3f3;
+}
+
+/* Style the .button-purchase element with a position of fixed, a right margin of 20px, and a bottom margin of 20px */
+.button-purchase {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+/* Style the .button-purchase img element with a height and width of 20px */
+.button-purchase img {
+  height: 25px;
+  width: 25px;
+}
+
+/* Style the .button-purchase:hover element with a background color */
+.button-purchase:hover {
+  background-color: #ccc;
+}
