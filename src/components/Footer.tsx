@@ -1,9 +1,9 @@
-import React from 'react';
+import { memo } from 'react';
 import { Terminal } from 'lucide-react';
 import { useLanguage } from '../i18n';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 
-export const Footer = React.memo(function Footer() {
+export const Footer = memo(function Footer() {
   const { t } = useLanguage();
   const s = useThemeStyles();
 

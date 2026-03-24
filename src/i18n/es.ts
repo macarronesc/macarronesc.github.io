@@ -16,7 +16,7 @@ export const es: Record<string, string> = {
 
   // AGNS
   'agns.title': 'AGNS',
-  'agns.description': 'Framework Zero-LLM para GraphRAG que reemplaza la navegación de grafos basada en modelos por navegación algorítmica, reduciendo costes operativos un 99%.',
+  'agns.description': 'Sistema Zero-LLM para GraphRAG que reemplaza la navegación de grafos basada en modelos por navegación algorítmica, reduciendo costes operativos un 99%.',
   'agns.stat.label': 'Eficiencia de Coste',
   'agns.stat.value': '-99%',
   'agns.stat.sub': 'Consultas LLM',
@@ -35,7 +35,7 @@ export const es: Record<string, string> = {
 
   // PyRun
   'pyrun.title': 'PyRun Cloud',
-  'pyrun.description': 'Plataforma SaaS Full-Stack que automatiza el despliegue de infraestructura cloud para investigadores — de código a clúster activo en minutos.',
+  'pyrun.description': 'Plataforma SaaS Full-Stack que automatiza el despliegue de infraestructura cloud para investigadores y profesionales — de código a clúster activo en minutos.',
   'pyrun.sla': 'SLA',
   'pyrun.users': 'Usuarios',
 
@@ -76,9 +76,9 @@ export const es: Record<string, string> = {
   'timeline.q3q4': 'Q3-Q4 2025',
   'timeline.upcoming': 'Próximos Eventos',
   'timeline.pycon': 'PyConEs 2025',
-  'timeline.pycon.location': 'Alicante, España • Keynote',
+  'timeline.pycon.location': 'Sevilla, España • Keynote',
   'timeline.euroscipy': 'EuroScipy 2025',
-  'timeline.euroscipy.location': 'París, Francia • Charla Técnica',
+  'timeline.euroscipy.location': 'Krakow, Polonia • Charla Técnica',
   'timeline.early2024': 'Inicio 2024',
   'timeline.klipso.badge': 'Fase de Escalado',
   'timeline.klipso.title': 'Klipso',
@@ -86,7 +86,7 @@ export const es: Record<string, string> = {
   'timeline.klipso.status': 'Producción Activa',
   'timeline.mid2024': 'Mediados 2024',
   'timeline.agns.title': 'AGNS',
-  'timeline.agns.description': 'Framework Zero-LLM para GraphRAG. Reducción del 99% en costes mediante navegación algorítmica de grafos y cadenas de razonamiento.',
+  'timeline.agns.description': 'Sistema Zero-LLM para GraphRAG. Reducción del 99% en costes mediante navegación algorítmica de grafos y cadenas de razonamiento.',
   'timeline.2023': '2023',
   'timeline.pyrun.title': 'PyRun Cloud',
   'timeline.pyrun.description': 'Plataforma SaaS Full-Stack que automatiza el despliegue cloud para investigadores. De código a clúster activo en minutos.',

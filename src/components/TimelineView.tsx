@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
-import { Scissors, BrainCircuit, CloudCog, AudioLines, Flag } from 'lucide-react';
 import { useLanguage } from '../i18n';
 import { useThemeStyles } from '../hooks/useThemeStyles';
+import { projects } from '../data/projects';
 
 interface TimelineViewProps {
   onSelectProject: (id: string) => void;
@@ -14,9 +14,20 @@ interface TimelineItem {
   content: React.ReactNode;
 }
 
+/** Get a project's icon component by ID */
+function getIcon(id: string) {
+  return projects.find((p) => p.id === id)!.icon;
+}
+
 export default function TimelineView({ onSelectProject }: TimelineViewProps) {
   const { t } = useLanguage();
   const s = useThemeStyles();
+
+  const KlipsoIcon = getIcon('klipso');
+  const AgnsIcon = getIcon('agns');
+  const LithopsIcon = getIcon('lithops');
+  const SoundlessIcon = getIcon('soundless');
+  const F1Icon = getIcon('f1');
 
   const items: TimelineItem[] = [
     {
@@ -36,7 +47,7 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
       content: (
         <div className={`${s.tlInvertedBg} p-6 rounded-2xl shadow-xl cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('klipso')}>
           <div className="flex justify-between items-start mb-4">
-            <Scissors className="w-5 h-5" />
+            <KlipsoIcon className="w-5 h-5" />
             <span className={`text-[8px] border ${s.tlInvertedBorder} px-2 py-0.5 rounded uppercase`}>{t('timeline.klipso.badge')}</span>
           </div>
           <h3 className="text-2xl font-black tracking-tight mb-2">{t('timeline.klipso.title')}</h3>
@@ -49,7 +60,7 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
       date: t('timeline.mid2024'), side: 'left',
       content: (
         <div className={`${s.tlCardBg2} p-6 rounded-2xl border text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('agns')}>
-          <div className="flex md:flex-row-reverse justify-between items-center mb-4"><BrainCircuit className="w-6 h-6" /><h3 className="text-2xl font-black tracking-tight">{t('timeline.agns.title')}</h3></div>
+          <div className="flex md:flex-row-reverse justify-between items-center mb-4"><AgnsIcon className="w-6 h-6" /><h3 className="text-2xl font-black tracking-tight">{t('timeline.agns.title')}</h3></div>
           <p className={`${s.tlSubText} text-sm mb-4`}>{t('timeline.agns.description')}</p>
           <div className={`h-1.5 w-full ${s.tlProgressBg} rounded-full overflow-hidden`}><div className={`h-full ${s.tlProgressFill} w-[99%]`}></div></div>
         </div>
@@ -68,7 +79,7 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
       date: t('timeline.2022'), side: 'left',
       content: (
         <div className={`${s.tlLithBg} p-6 rounded-2xl text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('lithops')}>
-          <CloudCog className="w-8 h-8 mb-4 block md:ml-auto" /><h3 className="text-xl font-bold mb-2">{t('timeline.lithops.title')}</h3>
+          <LithopsIcon className="w-8 h-8 mb-4 block md:ml-auto" /><h3 className="text-xl font-bold mb-2">{t('timeline.lithops.title')}</h3>
           <p className={`${s.tlSubText} text-sm mb-4`}>{t('timeline.lithops.description')}</p>
           <div className="flex gap-2 md:justify-end">
             {['Ollama', 'Gemini CLI'].map((l) => <span key={l} className={`text-[10px] font-bold ${s.tlTagBg} px-2 py-1 rounded`}>{l}</span>)}
@@ -80,9 +91,9 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
       date: t('timeline.2021'), side: 'right',
       content: (
         <div className={`${s.tlSoundBg} border p-6 rounded-2xl cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('soundless')}>
-          <AudioLines className={`w-6 h-6 ${s.tlMuted} mb-4 block`} /><h3 className="text-xl font-bold mb-2">{t('timeline.soundless.title')}</h3>
+          <SoundlessIcon className={`w-6 h-6 ${s.tlMuted} mb-4 block`} /><h3 className="text-xl font-bold mb-2">{t('timeline.soundless.title')}</h3>
           <p className={`${s.tlSubText} text-sm`}>{t('timeline.soundless.description')}</p>
-          <div className="mt-4 flex gap-2 items-center"><Flag className={`w-4 h-4 ${s.tlMuted}`} /><span className={`text-[10px] font-bold ${s.tlMuted} pt-0.5 uppercase`}>{t('timeline.f1.label')}</span></div>
+          <div className="mt-4 flex gap-2 items-center"><F1Icon className={`w-4 h-4 ${s.tlMuted}`} /><span className={`text-[10px] font-bold ${s.tlMuted} pt-0.5 uppercase`}>{t('timeline.f1.label')}</span></div>
         </div>
       ),
     },

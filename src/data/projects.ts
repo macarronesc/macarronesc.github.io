@@ -10,12 +10,12 @@ export interface Project {
 export const projects: Project[] = [
   { id: 'agns', title: 'AGNS', tech: ['AI & LLMs', 'Python'], icon: BrainCircuit },
   { id: 'klipso', title: 'Klipso', tech: ['AI & LLMs', 'Python', 'Cloud'], icon: Scissors },
-  { id: 'lithops', title: 'Lithops', tech: ['Serverless', 'Python', 'Cloud'], icon: CloudCog },
-  { id: 'pyrun', title: 'PyRun Cloud', tech: ['Serverless', 'Cloud', 'Kubernetes'], icon: Rocket },
+  { id: 'lithops', title: 'Lithops', tech: ['Serverless', 'Python', 'Cloud', 'Kubernetes'], icon: CloudCog },
+  { id: 'pyrun', title: 'PyRun Cloud', tech: ['AI & LLMs', 'Python', 'Serverless', 'Cloud', 'Kubernetes'], icon: Rocket },
   { id: 'soundless', title: 'Soundless', tech: ['Cloud', 'Python'], icon: AudioLines },
   { id: 'f1', title: 'F1 Oracle', tech: ['AI & LLMs', 'Python'], icon: Flag },
   { id: 'core', title: 'Core Contributions', tech: ['AI & LLMs', 'Rust'], icon: BrainCircuit },
-  { id: 'speaking', title: 'Technical Speaking', tech: ['Cloud', 'Python'], icon: BrainCircuit },
+  { id: 'speaking', title: 'Technical Speaking', tech: ['Cloud', 'Serverless', 'Python'], icon: BrainCircuit },
 ];
 
 export const techFilters = ['Cloud', 'AI & LLMs', 'Python', 'Serverless', 'Rust', 'Kubernetes'] as const;

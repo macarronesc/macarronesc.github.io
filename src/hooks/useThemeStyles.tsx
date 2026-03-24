@@ -30,6 +30,28 @@ export function useThemeStyles() {
     const isCardDark = (i: number) => cardThemes[i];
     const isEffDark = (i: number) => (dark ? !isCardDark(i) : isCardDark(i));
 
+    // Reusable card style builders
+    const cardBg = (i: number) => {
+      const cd = isCardDark(i);
+      if (dark) return cd ? 'bg-white text-zinc-900' : 'bg-zinc-900 text-zinc-100 border border-zinc-800';
+      return cd ? 'bg-black text-white' : 'bg-white text-[#1a1c1c] border border-zinc-100';
+    };
+    const cardHover = (i: number) => {
+      const cd = isCardDark(i);
+      if (dark) return cd ? 'hover:shadow-xl hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-700 hover:scale-[1.01]';
+      return cd ? 'hover:shadow-xl hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-300 hover:scale-[1.01]';
+    };
+    const smallCardBg = (i: number) => {
+      const cd = isCardDark(i);
+      if (dark) return cd ? 'bg-white text-zinc-900' : 'bg-zinc-900 text-zinc-100 border border-zinc-800';
+      return cd ? 'bg-black text-white' : 'bg-white border border-zinc-100';
+    };
+    const smallCardHover = (i: number) => {
+      const cd = isCardDark(i);
+      if (dark) return cd ? 'hover:shadow-lg hover:bg-zinc-100 hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-700 hover:scale-[1.01]';
+      return cd ? 'hover:shadow-lg hover:bg-zinc-900 hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-300 hover:scale-[1.01]';
+    };
+
     return {
       dark,
       theme,
@@ -83,33 +105,17 @@ export function useThemeStyles() {
       tlProgressBg: dark ? 'bg-zinc-700' : 'bg-zinc-200',
       tlProgressFill: dark ? 'bg-white' : 'bg-black',
 
-      // Card helpers
+      // Card helpers — composable base functions
       isCardDark,
       isEffDark,
-      cardBg: (i: number) => {
-        const cd = isCardDark(i);
-        if (dark) return cd ? 'bg-white text-zinc-900' : 'bg-zinc-900 text-zinc-100 border border-zinc-800';
-        return cd ? 'bg-black text-white' : 'bg-white text-[#1a1c1c] border border-zinc-100';
-      },
-      cardHover: (i: number) => {
-        const cd = isCardDark(i);
-        if (dark) return cd ? 'hover:shadow-xl hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-700 hover:scale-[1.01]';
-        return cd ? 'hover:shadow-xl hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-300 hover:scale-[1.01]';
-      },
-      smallCardBg: (i: number) => {
-        const cd = isCardDark(i);
-        if (dark) return cd ? 'bg-white text-zinc-900' : 'bg-zinc-900 text-zinc-100 border border-zinc-800';
-        return cd ? 'bg-black text-white' : 'bg-white border border-zinc-100';
-      },
-      smallCardHover: (i: number) => {
-        const cd = isCardDark(i);
-        if (dark) return cd ? 'hover:shadow-lg hover:bg-zinc-100 hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-700 hover:scale-[1.01]';
-        return cd ? 'hover:shadow-lg hover:bg-zinc-900 hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-300 hover:scale-[1.01]';
-      },
+      cardBg,
+      cardHover,
+      smallCardBg,
+      smallCardHover,
       textMuted: (i: number) => isEffDark(i) ? 'text-zinc-400' : 'text-zinc-500',
       textSubtle: (i: number) => isEffDark(i) ? 'text-zinc-500' : 'text-zinc-400',
       iconColor: (i: number) => isEffDark(i) ? 'text-white' : 'text-black',
-      iconMuted: (_i: number) => 'text-zinc-400',
+      iconMuted: 'text-zinc-400',
       tagBg: (i: number) => isEffDark(i) ? 'bg-white/10 border-white/10 text-zinc-300' : 'bg-zinc-50 border border-zinc-100 text-zinc-500',
       smallTagBg: (i: number) => isEffDark(i) ? 'text-zinc-400 border border-zinc-600' : 'bg-zinc-100',
       statBoxText: (i: number) => isEffDark(i) ? 'text-white' : 'text-black',
@@ -119,31 +125,14 @@ export function useThemeStyles() {
       accentText: (i: number) => isEffDark(i) ? 'text-blue-400' : 'text-blue-600',
       iconBg: (i: number) => isEffDark(i) ? 'bg-white/10' : 'bg-zinc-100',
       statBg: (i: number) => isEffDark(i) ? 'bg-white/5 border-white/10' : 'bg-zinc-50 border-zinc-100',
-      statBgAlt: (i: number) => isEffDark(i) ? 'bg-white/5 border-white/10' : 'bg-white border-zinc-100',
       coreBg: (i: number) => isEffDark(i) ? 'bg-white/10' : 'bg-zinc-50 border border-zinc-100',
       coreBorder: (i: number) => isEffDark(i) ? 'border-zinc-700' : 'border-zinc-100',
 
-      // Card class builders
-      getCardClass: (i: number, span: string) => {
-        const cd = isCardDark(i);
-        const bg = dark
-          ? (cd ? 'bg-white text-zinc-900' : 'bg-zinc-900 text-zinc-100 border border-zinc-800')
-          : (cd ? 'bg-black text-white' : 'bg-white text-[#1a1c1c] border border-zinc-100');
-        const hover = dark
-          ? (cd ? 'hover:shadow-xl hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-700 hover:scale-[1.01]')
-          : (cd ? 'hover:shadow-xl hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-300 hover:scale-[1.01]');
-        return `${span} ${bg} ${hover} p-8 rounded-2xl shadow-sm flex flex-col cursor-pointer transition-all duration-200 group`;
-      },
-      getSmallClass: (i: number) => {
-        const cd = isCardDark(i);
-        const bg = dark
-          ? (cd ? 'bg-white text-zinc-900' : 'bg-zinc-900 text-zinc-100 border border-zinc-800')
-          : (cd ? 'bg-black text-white' : 'bg-white border border-zinc-100');
-        const hover = dark
-          ? (cd ? 'hover:shadow-lg hover:bg-zinc-100 hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-700 hover:scale-[1.01]')
-          : (cd ? 'hover:shadow-lg hover:bg-zinc-900 hover:scale-[1.01]' : 'hover:shadow-md hover:border-zinc-300 hover:scale-[1.01]');
-        return `${bg} ${hover} p-6 rounded-2xl flex items-center justify-between cursor-pointer transition-all duration-200 shadow-sm group`;
-      },
+      // Composed card class builders — use base helpers, no duplication
+      getCardClass: (i: number, span: string) =>
+        `${span} ${cardBg(i)} ${cardHover(i)} p-8 rounded-2xl shadow-sm flex flex-col cursor-pointer transition-all duration-200 group`,
+      getSmallClass: (i: number) =>
+        `${smallCardBg(i)} ${smallCardHover(i)} p-6 rounded-2xl flex items-center justify-between cursor-pointer transition-all duration-200 shadow-sm group`,
     };
   }, [dark, cardThemes, toggleTheme]);
 }

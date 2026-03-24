@@ -16,7 +16,7 @@ export const en: Record<string, string> = {
 
   // AGNS
   'agns.title': 'AGNS',
-  'agns.description': 'Zero-LLM GraphRAG framework that replaces expensive model-driven graph traversal with algorithmic navigation, cutting operational costs by 99%.',
+  'agns.description': 'Zero-LLM GraphRAG system that replaces expensive model-driven graph traversal with algorithmic navigation, cutting operational costs by 99%.',
   'agns.stat.label': 'Cost Efficiency',
   'agns.stat.value': '-99%',
   'agns.stat.sub': 'LLM Queries',
@@ -35,7 +35,7 @@ export const en: Record<string, string> = {
 
   // PyRun
   'pyrun.title': 'PyRun Cloud',
-  'pyrun.description': 'Full-stack SaaS platform that automates cloud infrastructure deployment for researchers — from code to running cluster in minutes.',
+  'pyrun.description': 'Full-stack SaaS platform that automates cloud infrastructure deployment for researchers and professionals — from code to running cluster in minutes.',
   'pyrun.sla': 'SLA',
   'pyrun.users': 'Users',
 
@@ -76,9 +76,9 @@ export const en: Record<string, string> = {
   'timeline.q3q4': 'Q3-Q4 2025',
   'timeline.upcoming': 'Upcoming Engagements',
   'timeline.pycon': 'PyConEs 2025',
-  'timeline.pycon.location': 'Alicante, Spain • Keynote',
+  'timeline.pycon.location': 'Sevilla, Spain • Keynote',
   'timeline.euroscipy': 'EuroScipy 2025',
-  'timeline.euroscipy.location': 'Paris, France • Technical Talk',
+  'timeline.euroscipy.location': 'Krakow, Poland • Technical Talk',
   'timeline.early2024': 'Early 2024',
   'timeline.klipso.badge': 'Scale Stage',
   'timeline.klipso.title': 'Klipso',
@@ -86,7 +86,7 @@ export const en: Record<string, string> = {
   'timeline.klipso.status': 'Active Production',
   'timeline.mid2024': 'Mid 2024',
   'timeline.agns.title': 'AGNS',
-  'timeline.agns.description': 'Zero-LLM GraphRAG framework. 99% cost reduction through algorithmic graph traversal and reasoning chains.',
+  'timeline.agns.description': 'Zero-LLM GraphRAG system. 99% cost reduction through algorithmic graph traversal and reasoning chains.',
   'timeline.2023': '2023',
   'timeline.pyrun.title': 'PyRun Cloud',
   'timeline.pyrun.description': 'Full-stack SaaS platform automating cloud deployment for researchers. From code to running cluster in minutes.',

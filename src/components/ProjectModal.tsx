@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { X } from 'lucide-react';
@@ -10,6 +10,8 @@ interface ProjectModalProps {
   projectId: string;
   onClose: () => void;
 }
+
+const BASE = import.meta.env.BASE_URL;
 
 export default function ProjectModal({ projectId, onClose }: ProjectModalProps) {
   const { t, language } = useLanguage();
@@ -24,11 +26,10 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
     const fetchContent = async () => {
       setLoading(true);
       try {
-        // Try language-specific file first, fall back to default
-        const langPath = language === 'en' ? `/content/${projectId}.md` : `/content/${language}/${projectId}.md`;
+        const langPath = language === 'en' ? `${BASE}content/${projectId}.md` : `${BASE}content/${language}/${projectId}.md`;
         let response = await fetch(langPath);
         if (!response.ok && language !== 'en') {
-          response = await fetch(`/content/${projectId}.md`);
+          response = await fetch(`${BASE}content/${projectId}.md`);
         }
         if (!response.ok) throw new Error('Failed to load content');
         setContent(await response.text());

@@ -37,9 +37,6 @@ export function FilterBar({ visible, activeFilter, onFilterClick }: FilterBarPro
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-colors duration-200 ${activeFilter === f ? s.filterBtnActive : s.filterBtnInactive}`}
                 >
                   {t(`filter.${key}`)}
-                  {f === 'Cloud' && (
-                    <span className={`ml-2 px-1.5 py-0.5 rounded text-[10px] ${activeFilter === 'Cloud' ? 'bg-white/20' : 'bg-black/10'}`}>12+</span>
-                  )}
                 </button>
               );
             })}

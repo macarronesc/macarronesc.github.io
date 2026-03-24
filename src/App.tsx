@@ -37,9 +37,9 @@ export default function App() {
 
         <AnimatePresence mode="wait">
           {view === 'grid' ? (
-            <ProjectGrid activeFilter={activeFilter} onSelectProject={setSelectedProject} />
+            <ProjectGrid key={`grid-${activeFilter || 'all'}`} activeFilter={activeFilter} onSelectProject={setSelectedProject} />
           ) : (
-            <Suspense fallback={null}>
+            <Suspense key="timeline" fallback={null}>
               <TimelineView onSelectProject={setSelectedProject} />
             </Suspense>
           )}

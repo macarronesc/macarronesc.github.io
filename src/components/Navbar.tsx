@@ -1,10 +1,10 @@
-import React from 'react';
+import { memo } from 'react';
 import { motion } from 'motion/react';
 import { Terminal, Sun, Moon, Globe } from 'lucide-react';
 import { useLanguage } from '../i18n';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 
-export const Navbar = React.memo(function Navbar() {
+export const Navbar = memo(function Navbar() {
   const { t, language, setLanguage } = useLanguage();
   const s = useThemeStyles();
 

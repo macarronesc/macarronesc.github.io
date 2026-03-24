@@ -1,8 +1,7 @@
-import { motion, AnimatePresence } from 'motion/react';
-import { BrainCircuit, Scissors, CloudCog, Rocket, AudioLines, Flag } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useLanguage } from '../i18n';
 import { useThemeStyles } from '../hooks/useThemeStyles';
-import { isProjectVisible } from '../data/projects';
+import { projects, isProjectVisible } from '../data/projects';
 
 interface ProjectGridProps {
   activeFilter: string | null;
@@ -16,9 +15,21 @@ const cardV = {
   exit: { opacity: 0, transition: { duration: 0.4 } },
 };
 
+/** Get a project's icon component by ID */
+function getIcon(id: string) {
+  return projects.find((p) => p.id === id)!.icon;
+}
+
 export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps) {
   const { t } = useLanguage();
   const s = useThemeStyles();
+
+  const AgnsIcon = getIcon('agns');
+  const KlipsoIcon = getIcon('klipso');
+  const LithopsIcon = getIcon('lithops');
+  const PyrunIcon = getIcon('pyrun');
+  const SoundlessIcon = getIcon('soundless');
+  const F1Icon = getIcon('f1');
 
   return (
     <motion.div
@@ -34,7 +45,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
         <motion.div variants={cardV} onClick={() => onSelectProject('agns')} className={s.getCardClass(0, 'md:col-span-8') + ' md:flex-row gap-8'}>
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-6">
-              <span className={`${s.iconBg(0)} p-2.5 rounded-xl`}><BrainCircuit className={`w-6 h-6 ${s.iconColor(0)}`} /></span>
+              <span className={`${s.iconBg(0)} p-2.5 rounded-xl`}><AgnsIcon className={`w-6 h-6 ${s.iconColor(0)}`} /></span>
               <h2 className="text-3xl font-black tracking-tight">{t('agns.title')}</h2>
             </div>
             <p className={`${s.textMuted(0)} text-sm mb-8 leading-relaxed max-w-md`}>{t('agns.description')}</p>
@@ -55,7 +66,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
         <motion.div variants={cardV} onClick={() => onSelectProject('klipso')} className={s.getCardClass(1, 'md:col-span-4') + ' justify-between'}>
           <div>
             <div className="flex justify-between items-start mb-8">
-              <Scissors className={`w-8 h-8 ${s.iconColor(1)}`} />
+              <KlipsoIcon className={`w-8 h-8 ${s.iconColor(1)}`} />
               <span className="bg-green-500 px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-black">{t('klipso.badge')}</span>
             </div>
             <h2 className="text-2xl font-bold mb-3 tracking-tight">{t('klipso.title')}</h2>
@@ -78,7 +89,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
       {isProjectVisible('lithops', activeFilter) && (
         <motion.div variants={cardV} onClick={() => onSelectProject('lithops')} className={s.getCardClass(2, 'md:col-span-4') + ' justify-between'}>
           <div>
-            <CloudCog className={`w-7 h-7 ${s.iconMuted(2)} mb-5`} />
+            <LithopsIcon className={`w-7 h-7 ${s.iconMuted} mb-5`} />
             <h2 className="text-xl font-bold mb-2 tracking-tight">{t('lithops.title')}</h2>
             <p className={`${s.textMuted(2)} text-sm mb-8 leading-relaxed`}>{t('lithops.description')}</p>
           </div>
@@ -89,7 +100,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
               <span className={`text-[10px] font-bold ${s.accentText(2)} tracking-wider`}>{t('lithops.native')}</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {['Serverless', 'Distributed Systems'].map((tag) => <span key={tag} className={`${s.smallTagBg(2)} text-[9px] font-bold px-2 py-1 rounded uppercase tracking-wider`}>{tag}</span>)}
+              {['Serverless', 'Distributed Systems', 'HPC'].map((tag) => <span key={tag} className={`${s.smallTagBg(2)} text-[9px] font-bold px-2 py-1 rounded uppercase tracking-wider`}>{tag}</span>)}
             </div>
           </div>
         </motion.div>
@@ -99,13 +110,13 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
       {isProjectVisible('pyrun', activeFilter) && (
         <motion.div variants={cardV} onClick={() => onSelectProject('pyrun')} className={s.getCardClass(3, 'md:col-span-4') + ' justify-between'}>
           <div>
-            <Rocket className={`w-7 h-7 ${s.iconMuted(3)} mb-5`} />
+            <PyrunIcon className={`w-7 h-7 ${s.iconMuted} mb-5`} />
             <h2 className="text-xl font-bold mb-2 tracking-tight">{t('pyrun.title')}</h2>
             <p className={`${s.textMuted(3)} text-sm mb-8 leading-relaxed`}>{t('pyrun.description')}</p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[{ label: t('pyrun.sla'), value: '99.98%' }, { label: t('pyrun.users'), value: 'Beta 500' }].map((stat) => (
-              <div key={stat.label} className={`${s.statBgAlt(3)} p-4 rounded-xl border shadow-sm`}>
+              <div key={stat.label} className={`${s.statBg(3)} p-4 rounded-xl border shadow-sm`}>
                 <span className={`block text-[10px] font-bold ${s.textSubtle(3)} uppercase tracking-widest mb-1`}>{stat.label}</span>
                 <span className={`text-xl font-black ${s.statBoxText(3)} tracking-tight`}>{stat.value}</span>
               </div>
@@ -120,13 +131,13 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
           {isProjectVisible('soundless', activeFilter) && (
             <div onClick={() => onSelectProject('soundless')} className={s.getSmallClass(4)}>
               <div><h3 className="text-base font-bold tracking-tight mb-1">{t('soundless.title')}</h3><p className={`text-xs ${s.textSubtle(4)}`}>{t('soundless.subtitle')}</p></div>
-              <AudioLines className={`w-6 h-6 ${s.iconMuted(4)}`} />
+              <SoundlessIcon className={`w-6 h-6 ${s.iconMuted}`} />
             </div>
           )}
           {isProjectVisible('f1', activeFilter) && (
             <div onClick={() => onSelectProject('f1-oracle')} className={s.getSmallClass(5)}>
               <div><h3 className="text-base font-bold tracking-tight mb-1">{t('f1.title')}</h3><p className={`text-xs ${s.textSubtle(5)}`}>{t('f1.subtitle')}</p></div>
-              <Flag className={`w-6 h-6 ${s.iconMuted(5)}`} />
+              <F1Icon className={`w-6 h-6 ${s.iconMuted}`} />
             </div>
           )}
         </motion.div>

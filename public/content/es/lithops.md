@@ -1,10 +1,10 @@
-# Lithops — Computación Serverless Clúster-Agnóstica
+# Lithops — Computación Serverless Multi-Cloud y HPC
 
-**Lithops** es un robusto framework de software de código abierto en lenguaje Python diseñado para ejecutar masivas cargas de computación paralelas a través del alcance infinito que conceden arquitecturas subyacentes Serverless – lográndolo todo abstractamente sin precisar a los clientes alterar siquiera una pequeña línea de su lógica interna original. Como líder contribuyente del programa troncal, fui un factor integral a fin de elevar drásticamente sus semánticas distribuidas y la convergencia superando los clouds corporativos dirigiéndolo plenamente hacia la computación de altísimo desempeño (entornos HPC e internalizaciones nativas hacia el ecosistema de Kubernetes).
+**Lithops** es un robusto framework *open-source* en Python diseñado para ejecutar cargas de trabajo masivamente paralelas a través de infraestructuras serverless, lográndolo todo abstractamente sin obligar al usuario a alterar su código original. Como uno de los contribuyentes principales del núcleo, jugué un papel fundamental en la expansión de su semántica de orquestación: llevándolo desde los proveedores cloud comerciales hasta entornos de Computación de Alto Rendimiento (HPC) e infraestructuras dinámicas dedicadas.
 
-### El Paradigma Computacional Lithops
+### El Paradigma Computacional
 
-Incluso superando la elasticidad ilimitada proveniente de soluciones cloud, los impedimentos insalvables para programar funciones, almacenar y operar con contenedores heterogéneos constituyen un complejo obstáculo hacia los analistas y estadísticos. Lithops desterró las dificultades y consolidó la abstracción funcional de nivel asombroso a través de su purista y estilizada Interfaz unificada Map-Reduce Python:
+A pesar de que el Cloud ofrece una elasticidad inmensa, la complejidad operativa de gestionar contenedores, funciones serverless y almacenamiento de objetos supone una gran barrera para científicos de datos e investigadores. Lithops elimina esta fricción mediante una elegante interfaz Map-Reduce en Python:
 
 ```python
 import lithops
@@ -17,26 +17,29 @@ fexec.map(mi_funcion, range(1000))
 resultados = fexec.get_result()
 ```
 
-Consecuentemente el código se engrana imperceptible y equitativamente en **AWS Lambda, GCP Cloud Run, IBM Code Engine, Azure Functions, Kubernetes**, y superordenadores puramente aislados (on-premise)—garantizando absolutas nulidades de codificaciones adaptadas al proveedor de hardware (boilerplate-free deployment). Sus capas ejecutan automáticamente contenedores dependientes, empaquetan subestructuras binarias al instante y sintetizan sus reportes transaccionales de cierre algorítmico.
+Este código se ejecuta de forma transparente en **AWS Lambda, GCP Cloud Run, IBM Code Engine, Azure Functions, Kubernetes**, o superordenadores locales—sin absolutamente nada de código repetitivo (boilerplate) específico del proveedor. Lithops se encarga del empaquetado, despliegue, autoescalado y agregación de resultados automáticamente.
 
-### Mis Participaciones Fundamentales
+### Mis Contribuciones Principales
 
-#### Optimización Estructural a Kubernetes Re-Arquitectecturado (Colas de Despacho)
-Idée y forjé la base fundamental nativa sobre ambientes clúster a factor puramente de un patrón sistémico altamente óptimo designado bajo el calificativo de **cola de trabajo global persistente**. Con el logro de desplazar irrevocablemente los vetustos y densos ecosistemas transaccionales pod-escalados unidimensionalmente (pod-per-invocation) esta reforma modernizadora:
-- Subordina envíos asíncronos distribuyendo orgánicamente tareas masivas a conjuntos de Pods Trabajadores altamente preservados en vivo.
-- Autoriza escalabilidad de volumen reorientada acorde al incremento transaccional algorítmico calculado.
-- Depuró drásticamente fallas al deprimir 10 veces las dependencias pesadas impuestas por lanzamientos lentos en arranques *cold-starts*, rebotando radicalmente el beneficio medido sobre rendimiento transaccional.
+#### Motor Serverless para HPC (MareNostrum 5 y BSC)
+Los entornos HPC tradicionales dependen de sistemas de colas por lotes (batch) muy rígidos, lo que provoca un gran desperdicio de CPU y altas latencias. En colaboración con el **Barcelona Supercomputing Center (BSC)**, diseñé la arquitectura de un nuevo backend de computación para Lithops destinado al superordenador **MareNostrum 5**.
+- Implementé un motor de ejecución personalizado utilizando contenedores **Singularity** (eludiendo las restricciones de privilegios root de Docker en HPC) combinado con una cola de trabajo de altísimo rendimiento en **RabbitMQ**.
+- Habilitó, por primera vez, la semántica de ejecución serverless orientada a eventos directamente en los nodos de un superordenador.
+- **Resultados:** En las pruebas de rendimiento, los FLOPS y el ancho de banda de I/O superaron significativamente a las plataformas cloud comerciales de primer nivel, eliminando por completo el desperdicio de CPU.
+- *Publicado en **IEEE 2024**: "Enhancing HPC with Serverless Computing: Lithops on MareNostrum5".*
 
-#### Integraciones con Paradigmas HPC—BSC MareNostrum 5
-Mi avance en factor investigación consolidada consistió en programar, depurar y erigir de un solo asalto la robusta estructura perimetral arquitectónica y de aprovisionamiento de Lithops al formidable **Superordenador MareNostrum 5** implementado globalmente por parte del Barcelona Supercomputing Center. Su inmersión computacional:
-- Destrabó capacidades limitadas instaurando flujos masivos condicionados temporalmente bajo la semántica *serverless event-driven* sin precedentes para clústeres restringidos y orientados a CPU-nodes.
-- Liquidó rotunda y totalmente en una porción significativa desproporcionados factores históricos causados del malogro de esperas incondicionales a través de colas jerarquizadas o sistema de lotes estáticos pautados en CPU.
-- Acuñó reportes en base a las cuantificaciones empíricas con métricas asombrosas en donde se rebasaba ampliamente ratios formales preexistentes I/O en factores de las más prestigiosas redes Cloud Empresariales internacionales.
+#### Arquitectura Kubernetes mediante Work-Queue
+Diseñé e implementé un backend de Kubernetes altamente eficiente basado en un patrón de **cola de trabajo (Work-Queue)** impulsado por RabbitMQ. Reemplazando el modelo tradicional de "un pod por invocación", este sistema:
+- Ingiere tareas en streaming y las despacha dinámicamente a un pool elástico y persistente de pods trabajadores (warm-start).
+- Reduce radicalmente la carga del API server de K8s y el *overhead* de creación de pods, logrando una **mejora de hasta 7x en tiempos de arranque en frío (cold-starts)**.
 
-Sometí el alcance del citado modelo a nivel formal publicándose formalmente en: **IEEE 2024**: *"Enhancing HPC with Serverless Computing: Lithops on MareNostrum5"*.
+#### Backend Dinámico "Standalone" para AWS EC2
+Desarrollé desde cero un backend computacional completamente nuevo para **Amazon EC2**. Aunque Lithops se orientaba clásicamente a plataformas FaaS (como AWS Lambda), ciertas cargas analíticas requieren la potencia sostenida de Máquinas Virtuales dedicadas.
+- Este backend "standalone" aprovisiona, escala y destruye instancias de AWS EC2 al vuelo.
+- Soporta ciclos de vida avanzados (`Create`, `Reuse` y `Consume`), permitiendo al framework levantar una flota de instancias EC2, desplegar la carga vía SSH, ejecutar en procesos paralelos y desmantelar automáticamente la infraestructura para optimizar costes.
 
-#### Estructuraciones y Aprovisionamientos Dask CloudProvider Enlazado
-Coadyuvé mediante el establecimiento y el rediseño para integraciones Dask originando una arquitectura posterior bajo el albergue corporativo general denominado **Dask CloudProvider**, amoldando la inmesurable topología funcional nativa bajo ecosistemas de orquestadores de IBM Code Engine y sus robustos contenedores abstraídos en Kubernetes sin gestores. Esto se coronó ratificándose mediante evaluaciones rigurosamente rápidas abaratando el encarecimiento masivo comparativamente ante sistemas preconfigurados como Coiled.
+#### Integración con Dask CloudProvider
+Fui el autor de un nuevo backend para el ecosistema **Dask CloudProvider**, integrando fluidamente los grafos analíticos distribuidos de Dask con la infraestructura serverless de IBM Cloud Code Engine. Esta solución demostró una velocidad de aprovisionamiento y una eficiencia de costes muy superiores en comparación con alternativas comerciales gestionadas como Coiled.
 
-### Lenguajes y Componentes Desplegados
-`Python` · `Kubernetes` · `AWS Lambda` · `GCP Cloud Run` · `IBM Code Engine` · `Docker` · `Dask`
+### Tecnologías Aplicadas
+`Python` · `AWS EC2/Lambda` · `Kubernetes` · `Singularity` · `RabbitMQ` · `GCP Cloud Run` · `IBM Code Engine` · `Docker` · `Dask`

@@ -1,9 +1,9 @@
-import React from 'react';
+import { memo } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../i18n';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 
-export const HeroSection = React.memo(function HeroSection() {
+export const HeroSection = memo(function HeroSection() {
   const { t } = useLanguage();
   const s = useThemeStyles();
 
