@@ -25,4 +25,4 @@ I designed and engineered a **completely new backend logic** integrating Dask wi
 I have also contributed extensively to cloud-native connectors and infrastructure orchestration tooling, successfully resolving critical architectural bottlenecks within container deployment pipelines and data ingestion services.
 
 ### Technologies
-`Rust` · `Go` · `Python` · `Kubernetes` · `Docker`
+`Go` · `TypeScript` · `Python` · `Kubernetes` · `Docker`

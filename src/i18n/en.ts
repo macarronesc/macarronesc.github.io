@@ -11,7 +11,7 @@ export const en: Record<string, string> = {
   'filter.ai': 'AI & LLMs',
   'filter.python': 'Python',
   'filter.serverless': 'Serverless',
-  'filter.rust': 'Rust',
+  'filter.others': 'Others',
   'filter.kubernetes': 'Kubernetes',
 
   // AGNS
@@ -73,28 +73,49 @@ export const en: Record<string, string> = {
   'modal.title': 'Project Details',
 
   // Timeline
-  'timeline.q3q4': 'Q3-Q4 2025',
   'timeline.upcoming': 'Upcoming Engagements',
+  'timeline.conferences': 'Conferences',
+
+  // Timeline - Fechas de proyectos
+  'timeline.lithops.date': '2022 — 2024',
+  'timeline.soundless.date': '2024 — 2025',
+  'timeline.pyrun.date': '2025 — 2026',
+  'timeline.agns.date': 'Mid 2025 — 2026',
+  'timeline.klipso.date': 'Early 2026',
+  'timeline.core.date': '2026',
+
+  // Timeline - Conferencias
+  'timeline.euroscipy.date': 'August 2025',
+  'timeline.pycon.date': 'October 2025',
   'timeline.pycon': 'PyConEs 2025',
   'timeline.pycon.location': 'Sevilla, Spain • Keynote',
   'timeline.euroscipy': 'EuroScipy 2025',
   'timeline.euroscipy.location': 'Krakow, Poland • Technical Talk',
-  'timeline.early2024': 'Early 2024',
+
+  // Timeline - Klipso
   'timeline.klipso.badge': 'Scale Stage',
   'timeline.klipso.title': 'Klipso',
   'timeline.klipso.description': 'AI-powered viral clip platform. 2.5k+ clips generated for 50+ content creators using Whisper, Gemini, and face-tracking AI.',
   'timeline.klipso.status': 'Active Production',
-  'timeline.mid2024': 'Mid 2024',
+
+  // Timeline - AGNS
   'timeline.agns.title': 'AGNS',
   'timeline.agns.description': 'Zero-LLM GraphRAG system. 99% cost reduction through algorithmic graph traversal and reasoning chains.',
-  'timeline.2023': '2023',
+
+  // Timeline - PyRun
   'timeline.pyrun.title': 'PyRun Cloud',
   'timeline.pyrun.description': 'Full-stack SaaS platform automating cloud deployment for researchers. From code to running cluster in minutes.',
-  'timeline.2022': '2022',
+
+  // Timeline - Lithops
   'timeline.lithops.title': 'Lithops',
   'timeline.lithops.description': 'Multi-cloud serverless framework. Orchestrate 10k+ parallel functions across AWS, GCP, and Azure with zero code changes.',
-  'timeline.2021': '2021 — Origin',
+
+  // Timeline - Soundless
   'timeline.soundless.title': 'Soundless',
   'timeline.soundless.description': 'Citizen science platform correlating urban noise pollution with sleep health. 50 real-world participants, mobile + wearable data collection.',
   'timeline.f1.label': 'F1 Oracle Beta',
+
+  // Timeline - Core Contributions
+  'timeline.core.title': 'Core Contributions',
+  'timeline.core.description': 'Open-source contributions to Ollama, Gemini CLI, Dask CloudProvider, and cloud-native tooling.',
 };

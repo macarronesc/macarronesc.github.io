@@ -25,4 +25,4 @@ Dirigí e implementé *from scratch* (desde su inicio) un **backend estructuralm
 Desarrollo, revisión y ampliación focalizándome operísticamente hacia robustez central (*core components*) en arquitecturas basadas extensivamente sobre *orchestration bindings*, subsanando asfixias analíticas y estructuralizando conectores transaccionales eficientes sobre *cloud-deployments pipelines* masivamente distribuidos en *micro-servers containers*.
 
 ### Tecnologías Aplicadas
-`Rust` · `Go` · `Python` · `Kubernetes` · `Docker`
+`Go` · `TypeScript` · `Python` · `Kubernetes` · `Docker`

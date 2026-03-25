@@ -48,7 +48,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
               <span className={`${s.iconBg(0)} p-2.5 rounded-xl`}><AgnsIcon className={`w-6 h-6 ${s.iconColor(0)}`} /></span>
               <h2 className="text-3xl font-black tracking-tight">{t('agns.title')}</h2>
             </div>
-            <p className={`${s.textMuted(0)} text-sm mb-8 leading-relaxed max-w-md`}>{t('agns.description')}</p>
+            <p className={`${s.textMuted(0)} text-sm mb-8 leading-relaxed max-w-md text-justify`}>{t('agns.description')}</p>
             <div className="flex flex-wrap gap-2">
               {['PyTorch', 'Neo4j', 'LLMs'].map((tag) => <span key={tag} className={`${s.tagBg(0)} text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider`}>{tag}</span>)}
             </div>
@@ -70,7 +70,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
               <span className="bg-green-500 px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-black">{t('klipso.badge')}</span>
             </div>
             <h2 className="text-2xl font-bold mb-3 tracking-tight">{t('klipso.title')}</h2>
-            <p className={`${s.textMuted(1)} text-sm leading-relaxed`}>{t('klipso.description')}</p>
+            <p className={`${s.textMuted(1)} text-sm leading-relaxed text-justify`}>{t('klipso.description')}</p>
           </div>
           <div className="mt-10">
             <div className="flex justify-between items-end mb-2">
@@ -91,7 +91,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
           <div>
             <LithopsIcon className={`w-7 h-7 ${s.iconMuted} mb-5`} />
             <h2 className="text-xl font-bold mb-2 tracking-tight">{t('lithops.title')}</h2>
-            <p className={`${s.textMuted(2)} text-sm mb-8 leading-relaxed`}>{t('lithops.description')}</p>
+            <p className={`${s.textMuted(2)} text-sm mb-8 leading-relaxed text-justify`}>{t('lithops.description')}</p>
           </div>
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
@@ -112,7 +112,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
           <div>
             <PyrunIcon className={`w-7 h-7 ${s.iconMuted} mb-5`} />
             <h2 className="text-xl font-bold mb-2 tracking-tight">{t('pyrun.title')}</h2>
-            <p className={`${s.textMuted(3)} text-sm mb-8 leading-relaxed`}>{t('pyrun.description')}</p>
+            <p className={`${s.textMuted(3)} text-sm mb-8 leading-relaxed text-justify`}>{t('pyrun.description')}</p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[{ label: t('pyrun.sla'), value: '99.98%' }, { label: t('pyrun.users'), value: 'Beta 500' }].map((stat) => (

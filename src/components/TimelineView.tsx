@@ -28,22 +28,90 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
   const LithopsIcon = getIcon('lithops');
   const SoundlessIcon = getIcon('soundless');
   const F1Icon = getIcon('f1');
+  const CoreIcon = getIcon('core');
 
   const items: TimelineItem[] = [
+    // 1. Lithops (2022-2024) - LEFT
     {
-      date: t('timeline.q3q4'), side: 'left',
+      date: t('timeline.lithops.date'), side: 'left',
       content: (
-        <div className={`${s.tlCardBg} p-6 rounded-2xl border text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('speaking')}>
-          <h3 className={`text-xs font-bold tracking-widest uppercase ${s.tlMuted} mb-4`}>{t('timeline.upcoming')}</h3>
-          <div className="space-y-4">
-            <div><p className="font-black text-lg">{t('timeline.pycon')}</p><p className={`text-sm ${s.tlSubText}`}>{t('timeline.pycon.location')}</p></div>
-            <div className={`pt-4 border-t ${s.tlBorderColor}`}><p className="font-black text-lg">{t('timeline.euroscipy')}</p><p className={`text-sm ${s.tlSubText}`}>{t('timeline.euroscipy.location')}</p></div>
+        <div className={`${s.tlCardBg} p-6 rounded-2xl border text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('lithops')}>
+          <LithopsIcon className="w-8 h-8 mb-4 block md:ml-auto" />
+          <h3 className="text-xl font-bold mb-2">{t('timeline.lithops.title')}</h3>
+          <p className={`${s.tlSubText} text-sm text-justify md:text-right`}>{t('timeline.lithops.description')}</p>
+        </div>
+      ),
+    },
+
+    // 2. Soundless (2024-2025) - RIGHT
+    {
+      date: t('timeline.soundless.date'), side: 'right',
+      content: (
+        <div className={`${s.tlSoundBg} border p-6 rounded-2xl cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('soundless')}>
+          <SoundlessIcon className={`w-6 h-6 ${s.tlMuted} mb-4 block`} />
+          <h3 className="text-xl font-bold mb-2">{t('timeline.soundless.title')}</h3>
+          <p className={`${s.tlSubText} text-sm text-justify`}>{t('timeline.soundless.description')}</p>
+          <div className="mt-4 flex gap-2 items-center">
+            <F1Icon className={`w-4 h-4 ${s.tlMuted}`} />
+            <span className={`text-[10px] font-bold ${s.tlMuted} pt-0.5 uppercase`}>{t('timeline.f1.label')}</span>
           </div>
         </div>
       ),
     },
+
+    // 3. PyRun (2025-2026) - LEFT
     {
-      date: t('timeline.early2024'), side: 'right', dateColor: s.dark ? 'text-white' : 'text-black',
+      date: t('timeline.pyrun.date'), side: 'left',
+      content: (
+        <div className={`${s.tlPyrunBg} p-6 rounded-2xl text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('pyrun')}>
+          <h3 className="text-2xl font-black tracking-tight mb-2 uppercase italic">{t('timeline.pyrun.title')}</h3>
+          <p className={`${s.tlPyrunText} text-sm text-justify md:text-right`}>{t('timeline.pyrun.description')}</p>
+        </div>
+      ),
+    },
+
+    // 4. AGNS (Mid 2025-2026) - RIGHT
+    {
+      date: t('timeline.agns.date'), side: 'right',
+      content: (
+        <div className={`${s.tlCardBg2} p-6 rounded-2xl border cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('agns')}>
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-2xl font-black tracking-tight">{t('timeline.agns.title')}</h3>
+            <AgnsIcon className="w-6 h-6" />
+          </div>
+          <p className={`${s.tlSubText} text-sm mb-4 text-justify`}>{t('timeline.agns.description')}</p>
+          <div className={`h-1.5 w-full ${s.tlProgressBg} rounded-full overflow-hidden`}>
+            <div className={`h-full ${s.tlProgressFill} w-[99%]`}></div>
+          </div>
+        </div>
+      ),
+    },
+
+    // 5. Conferences (August-October 2025) - LEFT
+    {
+      date: t('timeline.conferences'), side: 'left',
+      content: (
+        <div className={`${s.tlCardBg} p-6 rounded-2xl border text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('speaking')}>
+          <h3 className={`text-xs font-bold tracking-widest uppercase ${s.tlMuted} mb-4`}>{t('timeline.upcoming')}</h3>
+          <div className="space-y-4">
+            <div>
+              <span className={`text-[10px] font-bold ${s.tlMuted} uppercase`}>{t('timeline.euroscipy.date')}</span>
+              <p className="font-black text-lg">{t('timeline.euroscipy')}</p>
+              <p className={`text-sm ${s.tlSubText}`}>{t('timeline.euroscipy.location')}</p>
+            </div>
+            <div className={`pt-4 border-t ${s.tlBorderColor}`}>
+              <span className={`text-[10px] font-bold ${s.tlMuted} uppercase`}>{t('timeline.pycon.date')}</span>
+              <p className="font-black text-lg">{t('timeline.pycon')}</p>
+              <p className={`text-sm ${s.tlSubText}`}>{t('timeline.pycon.location')}</p>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+
+    // 6. Klipso (Early 2026) - RIGHT
+    {
+      date: t('timeline.klipso.date'), side: 'right', dateColor: s.dark ? 'text-white' : 'text-black',
       content: (
         <div className={`${s.tlInvertedBg} p-6 rounded-2xl shadow-xl cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('klipso')}>
           <div className="flex justify-between items-start mb-4">
@@ -51,49 +119,28 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
             <span className={`text-[8px] border ${s.tlInvertedBorder} px-2 py-0.5 rounded uppercase`}>{t('timeline.klipso.badge')}</span>
           </div>
           <h3 className="text-2xl font-black tracking-tight mb-2">{t('timeline.klipso.title')}</h3>
-          <p className={`${s.tlInvertedMuted} text-sm mb-4`}>{t('timeline.klipso.description')}</p>
-          <div className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-green-400"></div><span className="text-[10px] font-bold tracking-widest opacity-60 uppercase">{t('timeline.klipso.status')}</span></div>
-        </div>
-      ),
-    },
-    {
-      date: t('timeline.mid2024'), side: 'left',
-      content: (
-        <div className={`${s.tlCardBg2} p-6 rounded-2xl border text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('agns')}>
-          <div className="flex md:flex-row-reverse justify-between items-center mb-4"><AgnsIcon className="w-6 h-6" /><h3 className="text-2xl font-black tracking-tight">{t('timeline.agns.title')}</h3></div>
-          <p className={`${s.tlSubText} text-sm mb-4`}>{t('timeline.agns.description')}</p>
-          <div className={`h-1.5 w-full ${s.tlProgressBg} rounded-full overflow-hidden`}><div className={`h-full ${s.tlProgressFill} w-[99%]`}></div></div>
-        </div>
-      ),
-    },
-    {
-      date: t('timeline.2023'), side: 'right',
-      content: (
-        <div className={`${s.tlPyrunBg} p-6 rounded-2xl cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('pyrun')}>
-          <h3 className="text-2xl font-black tracking-tight mb-2 uppercase italic">{t('timeline.pyrun.title')}</h3>
-          <p className={`${s.tlPyrunText} text-sm mb-6`}>{t('timeline.pyrun.description')}</p>
-        </div>
-      ),
-    },
-    {
-      date: t('timeline.2022'), side: 'left',
-      content: (
-        <div className={`${s.tlLithBg} p-6 rounded-2xl text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('lithops')}>
-          <LithopsIcon className="w-8 h-8 mb-4 block md:ml-auto" /><h3 className="text-xl font-bold mb-2">{t('timeline.lithops.title')}</h3>
-          <p className={`${s.tlSubText} text-sm mb-4`}>{t('timeline.lithops.description')}</p>
-          <div className="flex gap-2 md:justify-end">
-            {['Ollama', 'Gemini CLI'].map((l) => <span key={l} className={`text-[10px] font-bold ${s.tlTagBg} px-2 py-1 rounded`}>{l}</span>)}
+          <p className={`${s.tlInvertedMuted} text-sm mb-4 text-justify`}>{t('timeline.klipso.description')}</p>
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
+            <span className="text-[10px] font-bold tracking-widest opacity-60 uppercase">{t('timeline.klipso.status')}</span>
           </div>
         </div>
       ),
     },
+
+    // 7. Core Contributions (2026) - LEFT
     {
-      date: t('timeline.2021'), side: 'right',
+      date: t('timeline.core.date'), side: 'left',
       content: (
-        <div className={`${s.tlSoundBg} border p-6 rounded-2xl cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('soundless')}>
-          <SoundlessIcon className={`w-6 h-6 ${s.tlMuted} mb-4 block`} /><h3 className="text-xl font-bold mb-2">{t('timeline.soundless.title')}</h3>
-          <p className={`${s.tlSubText} text-sm`}>{t('timeline.soundless.description')}</p>
-          <div className="mt-4 flex gap-2 items-center"><F1Icon className={`w-4 h-4 ${s.tlMuted}`} /><span className={`text-[10px] font-bold ${s.tlMuted} pt-0.5 uppercase`}>{t('timeline.f1.label')}</span></div>
+        <div className={`${s.tlCardBg} p-6 rounded-2xl border text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('core')}>
+          <CoreIcon className="w-6 h-6 mb-4 block md:ml-auto" />
+          <h3 className="text-xl font-bold mb-2">{t('timeline.core.title')}</h3>
+          <p className={`${s.tlSubText} text-sm text-justify md:text-right`}>{t('timeline.core.description')}</p>
+          <div className="flex gap-2 mt-4 md:justify-end flex-wrap">
+            {['Ollama', 'Gemini CLI', 'Dask'].map((l) => (
+              <span key={l} className={`text-[10px] font-bold ${s.tlTagBg} px-2 py-1 rounded`}>{l}</span>
+            ))}
+          </div>
         </div>
       ),
     },

@@ -11,8 +11,12 @@ export const Footer = memo(function Footer() {
     <footer className={`w-full py-6 px-6 border-t ${s.footerBorder} mt-12 transition-colors duration-300`}>
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 w-full max-w-[1200px] mx-auto">
         <div className="flex gap-6">
-          {['Github', 'LinkedIn', 'Scholar'].map((l) => (
-            <a key={l} className={`${s.footerText} font-bold tracking-widest text-[10px] transition-all uppercase`} href="#">{l}</a>
+          {[
+            { name: 'Github', url: 'https://github.com/macarronesc' },
+            { name: 'LinkedIn', url: 'https://www.linkedin.com/in/daniel-alejandro-coll-tejeda/' },
+            { name: 'Scholar', url: 'https://scholar.google.com/scholar?q=Daniel+Coll+Tejeda' }
+          ].map((l) => (
+            <a key={l.name} className={`${s.footerText} font-bold tracking-widest text-[10px] transition-all uppercase hover:opacity-70`} href={l.url} target="_blank" rel="noopener noreferrer">{l.name}</a>
           ))}
         </div>
         <div className={`${s.footerMuted} font-bold tracking-widest text-[10px] uppercase flex items-center gap-2`}>

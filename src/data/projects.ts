@@ -14,11 +14,11 @@ export const projects: Project[] = [
   { id: 'pyrun', title: 'PyRun Cloud', tech: ['AI & LLMs', 'Python', 'Serverless', 'Cloud', 'Kubernetes'], icon: Rocket },
   { id: 'soundless', title: 'Soundless', tech: ['Cloud', 'Python'], icon: AudioLines },
   { id: 'f1', title: 'F1 Oracle', tech: ['AI & LLMs', 'Python'], icon: Flag },
-  { id: 'core', title: 'Core Contributions', tech: ['AI & LLMs', 'Rust'], icon: BrainCircuit },
+  { id: 'core', title: 'Core Contributions', tech: ['AI & LLMs', 'Others'], icon: BrainCircuit },
   { id: 'speaking', title: 'Technical Speaking', tech: ['Cloud', 'Serverless', 'Python'], icon: BrainCircuit },
 ];
 
-export const techFilters = ['Cloud', 'AI & LLMs', 'Python', 'Serverless', 'Rust', 'Kubernetes'] as const;
+export const techFilters = ['Cloud', 'AI & LLMs', 'Python', 'Serverless', 'Kubernetes', 'Others'] as const;
 
 export function isProjectVisible(projectId: string, activeFilter: string | null): boolean {
   if (!activeFilter) return true;

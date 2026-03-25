@@ -11,7 +11,7 @@ export const es: Record<string, string> = {
   'filter.ai': 'IA & LLMs',
   'filter.python': 'Python',
   'filter.serverless': 'Serverless',
-  'filter.rust': 'Rust',
+  'filter.others': 'Others',
   'filter.kubernetes': 'Kubernetes',
 
   // AGNS
@@ -73,28 +73,49 @@ export const es: Record<string, string> = {
   'modal.title': 'Detalles del Proyecto',
 
   // Timeline
-  'timeline.q3q4': 'Q3-Q4 2025',
   'timeline.upcoming': 'Próximos Eventos',
+  'timeline.conferences': 'Conferencias',
+
+  // Timeline - Fechas de proyectos
+  'timeline.lithops.date': '2022 — 2024',
+  'timeline.soundless.date': '2024 — 2025',
+  'timeline.pyrun.date': '2025 — 2026',
+  'timeline.agns.date': 'Mediados 2025 — 2026',
+  'timeline.klipso.date': 'Inicio 2026',
+  'timeline.core.date': '2026',
+
+  // Timeline - Conferencias
+  'timeline.euroscipy.date': 'Agosto 2025',
+  'timeline.pycon.date': 'Octubre 2025',
   'timeline.pycon': 'PyConEs 2025',
   'timeline.pycon.location': 'Sevilla, España • Keynote',
   'timeline.euroscipy': 'EuroScipy 2025',
   'timeline.euroscipy.location': 'Krakow, Polonia • Charla Técnica',
-  'timeline.early2024': 'Inicio 2024',
+
+  // Timeline - Klipso
   'timeline.klipso.badge': 'Fase de Escalado',
   'timeline.klipso.title': 'Klipso',
   'timeline.klipso.description': 'Plataforma de clips virales con IA. Más de 2.5k clips generados para más de 50 creadores usando Whisper, Gemini y face tracking.',
   'timeline.klipso.status': 'Producción Activa',
-  'timeline.mid2024': 'Mediados 2024',
+
+  // Timeline - AGNS
   'timeline.agns.title': 'AGNS',
   'timeline.agns.description': 'Sistema Zero-LLM para GraphRAG. Reducción del 99% en costes mediante navegación algorítmica de grafos y cadenas de razonamiento.',
-  'timeline.2023': '2023',
+
+  // Timeline - PyRun
   'timeline.pyrun.title': 'PyRun Cloud',
   'timeline.pyrun.description': 'Plataforma SaaS Full-Stack que automatiza el despliegue cloud para investigadores. De código a clúster activo en minutos.',
-  'timeline.2022': '2022',
+
+  // Timeline - Lithops
   'timeline.lithops.title': 'Lithops',
   'timeline.lithops.description': 'Framework serverless multi-cloud. Orquesta más de 10k funciones paralelas en AWS, GCP y Azure sin cambios en el código.',
-  'timeline.2021': '2021 — Origen',
+
+  // Timeline - Soundless
   'timeline.soundless.title': 'Soundless',
   'timeline.soundless.description': 'Plataforma de ciencia ciudadana que correlaciona la contaminación acústica urbana con la salud del sueño. 50 participantes reales, recopilación de datos móvil + wearable.',
   'timeline.f1.label': 'F1 Oracle Beta',
+
+  // Timeline - Core Contributions
+  'timeline.core.title': 'Contribuciones Open Source',
+  'timeline.core.description': 'Contribuciones open-source a Ollama, Gemini CLI, Dask CloudProvider y herramientas cloud-native.',
 };

@@ -43,4 +43,3 @@ I authored a new compute backend for the **Dask CloudProvider** ecosystem, seaml
 
 ### Technologies
 `Python` · `AWS EC2/Lambda` · `Kubernetes` · `Singularity` · `RabbitMQ` · `GCP Cloud Run` · `IBM Code Engine` · `Docker` · `Dask`
-```

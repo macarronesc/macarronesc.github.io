@@ -1,34 +1,45 @@
-# Adaptive Graph-Native Search (AGNS)
+# AGNS: Búsqueda Nativa en Grafos Adaptativa
 
-**AGNS** es un novedoso framework de GraphRAG diseñado para replantear fundamentalmente cómo los sistemas de Retrieval-Augmented Generation interactúan con los grafos de conocimiento. Mientras que arquitecturas de última generación, como Microsoft GraphRAG y LightRAG, dependen en exceso de LLMs para cada etapa de la navegación del grafo, AGNS desacopla completamente el modelo de lenguaje del bucle de recorrido topológico, logrando niveles sin precedentes de eficiencia.
+**AGNS** (Adaptive Graph-Native Search) es un nuevo framework de GraphRAG diseñado para resolver el problema de los "costes prohibitivos" en los sistemas de recuperación basados en grafos. Mientras que los estándares de la industria, como Microsoft GraphRAG, dependen de costosos procesos de "Map-Reduce" o navegación agéntica guiada por LLMs, AGNS introduce un **sistema de navegación Zero-LLM** impulsado por algoritmos matemáticos.
 
-### El Problema
+El resultado es un sistema que mantiene una latencia constante ($O(1)$) y costes de sub-céntimo independientemente del tamaño del dataset, sin sacrificar la precisión en tareas de razonamiento multihilo (multi-hop).
 
-Los sistemas actuales de GraphRAG delegan la exploración del conocimiento de forma integral al LLM—solicitándole constantemente que determine el "siguiente salto". Este paradigma introduce cuellos de botella críticos:
-- **Costes Insostenibles por Escalamiento**: La búsqueda global de Microsoft GraphRAG resume exhaustivamente cada red semántica, causando que los costes operativos escalen de forma lineal ($O(N)$) respecto al tamaño del corpus en lugar de la complejidad de la consulta.
-- **Latencia Prohibitiva**: Cada salto en la navegación exige un ciclo completo de inferencia hacia la API del LLM, imposibilitando los sistemas en tiempo real.
-- **Inversión Ineficiente de Tokens**: Las ventanas de contexto sufren de saturación por inyección de fragmentos dispersos en lugar de información estructurada altamente relevante.
+> 📄 **Estado Académico:** Paper de investigación enviado a **EMNLP 2026**. Yo arquitecté el framework y soy el autor del 100% del código de la implementación.
 
-### La Arquitectura de AGNS
+### 🚀 El Salto en Rendimiento
+Comparativa contra el SOTA (Estado del Arte) industrial actual (Microsoft GraphRAG DRIFT) utilizando un corpus de 1.280 documentos:
 
-Para superar estas severas limitaciones, diseñé un **sistema de navegación de grafos Zero-LLM** erigido sobre tres pilares fundamentales:
+| Métrica | AGNS (Ours) | GraphRAG (DRIFT) | Mejora |
+| :--- | :--- | :--- | :--- |
+| **Coste Operativo** | **€0.01** | €25.28 | **Reducción del 99.9%** |
+| **Latencia End-to-End** | **1.42s** | 142.04s | **100x más rápido** |
+| **Consumo de Tokens** | **2,291** | 6,441,013 | **~2,800x más eficiente** |
+| **Precisión (Stotal)** | **0.798** | 0.657 | **+21.4% superior** |
 
-1. **Recorrido Algorítmico del Grafo**: AGNS rechaza la exploración puramente guiada por LLM, implementando en su lugar umbrales dinámicos y algoritmos de penalización de *hubs* (nodos superconectados). Utiliza métricas nativas de teoría de grafos y comparaciones de similitud semántica para ejecutar la navegación sin emitir una sola petición al LLM.
+---
 
-2. **Cadenas de Razonamiento Estructuradas**: El subgrafo finalmente recorrido se serializa en densas estructuras lógicas (por ej., *Entidad A → predicado → Entidad B*), exponiendo relaciones de causalidad claras. Esto minimiza enormemente la sobrecarga del mecanismo de atención del modelo y eleva drásticamente la densidad informativa por token contextualizado.
+### 🧠 Contribuciones Arquitectónicas Clave
 
-3. **Síntesis LLM de Inferencia Única (Single-Shot)**: Completada la exploración algorítmica profunda, AGNS efectúa exactamente una sola llamada al LLM para la síntesis final de la respuesta a partir de las cadenas causales. Así garantiza un coste rigurosamente constante ($O(1)$) por cada consulta emitida, con total independencia del tamaño escalado de los datos corporativos.
+#### 1. Exploración de Grafos Paralela Zero-LLM
+La innovación principal de AGNS es trasladar la "inteligencia" del recorrido del grafo del LLM al propio motor de grafos.
+*   **Umbral Semántico Dinámico:** En lugar de un radio de búsqueda fijo, AGNS calcula una frontera de expansión basada en la "fuerza de la señal" semántica de la consulta del usuario.
+*   **Filtrado de Hubs por Comunidad:** Una función de penalización personalizada ($P_{hub}$) identifica y evita "hubs genéricos" (como la palabra "Sistema") que causan deriva semántica, protegiendo a la vez los "hubs de tópico" vitales para el dominio local.
 
-### Resultados (Comparado contra State-of-the-Art)
+#### 2. Cadenas de Razonamiento Serializadas (Reasoning Chains)
+Los sistemas RAG tradicionales saturan la ventana de contexto con fragmentos de texto inconexos. AGNS agrega los subgrafos recorridos y los serializa en **Cadenas de Razonamiento** (ej., `Entidad A —[predicado]—> Entidad B`).
+*   **Densidad Lingüística:** Al proporcionar estructuras causales explícitas, reducimos la carga cognitiva en el mecanismo de atención del LLM.
+*   **Compresión de Contexto:** AGNS supera a sus competidores usando solo ~2,000 tokens de contexto, mientras que otros requieren más de 100,000 tokens para alcanzar profundidades de razonamiento similares.
 
-| Métrica | AGNS | Microsoft GraphRAG | Mejora Relativa |
-|---------|------|-------------------|--------|
-| **Coste medio por consulta** | €0.01 | €25.28 | **-99% de reducción** |
-| **Latencia de recuperación** | ~1s | ~100s | **100x más rápido** |
-| **Ventana de Contexto** | ~2,000 tokens | ~128,000 tokens | **64x más ligera** |
-| **Precisión Multi-Hop** | SOTA | SOTA | Altamente Comparable |
+#### 3. Escalabilidad $O(1)$
+Al desacoplar la recuperación del tamaño global del grafo, AGNS mantiene una curva de latencia casi plana. Mientras que la latencia de los sistemas tradicionales explotó de 8s a 162s ($O(N)$) al crecer el dataset, AGNS se mantuvo estable en ~1.4s.
 
-### Tecnologías
-`Python` · `Neo4j` · `PyTorch` · `Sentence Transformers` · `NetworkX`
+---
 
-> 📄 *Investigación académica actualmente en fase de redacción — orientada a un venue top-tier en áreas IR/NLP.*
+### 🛠️ Stack Tecnológico
+*   **Lógica:** Python, NetworkX (Algoritmos de Grafos).
+*   **ML & Embeddings:** PyTorch, Sentence-Transformers.
+*   **Base de Datos:** Neo4j (Indexación de Vectores + Grafos).
+*   **Evaluación:** LLM-as-a-Judge (Gemini 2.5 Flash Lite), ROUGE-L, Similitud de Coseno.
+
+### 📈 Impacto en Producción
+AGNS se encuentra actualmente en producción, permitiendo consultas complejas en tiempo real sobre repositorios técnicos masivos donde el RAG basado en vectores fallaba y el GraphRAG agéntico era financieramente inviable.
