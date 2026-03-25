@@ -313,7 +313,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
 
       {/* Soundless */}
       {isProjectVisible('soundless', activeFilter) && (
-        <motion.div variants={cardV} onClick={() => onSelectProject('soundless')} className={s.getCardClass(4, spans.soundless) + ' md:h-[100px]'}>
+        <motion.div variants={cardV} onClick={() => onSelectProject('soundless')} className={s.getCardClass(4, spans.soundless) + ' md:min-h-[100px] md:h-full'}>
           <div className="flex justify-between items-center h-full">
             <div><h3 className="text-base font-bold tracking-tight mb-1">{t('soundless.title')}</h3><p className={`text-xs ${s.textSubtle(4)}`}>{t('soundless.subtitle')}</p></div>
             <SoundlessIcon className={`w-6 h-6 ${s.iconMuted}`} />
@@ -323,7 +323,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
 
       {/* F1 Oracle */}
       {isProjectVisible('f1', activeFilter) && (
-        <motion.div variants={cardV} onClick={() => onSelectProject('f1-oracle')} className={s.getCardClass(5, spans.f1) + ' md:h-[100px]'}>
+        <motion.div variants={cardV} onClick={() => onSelectProject('f1-oracle')} className={s.getCardClass(5, spans.f1) + ' md:min-h-[100px] md:h-full'}>
           <div className="flex justify-between items-center h-full">
             <div><h3 className="text-base font-bold tracking-tight mb-1">{t('f1.title')}</h3><p className={`text-xs ${s.textSubtle(5)}`}>{t('f1.subtitle')}</p></div>
             <F1Icon className={`w-6 h-6 ${s.iconMuted}`} />
