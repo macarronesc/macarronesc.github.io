@@ -9,10 +9,9 @@ export const es: Record<string, string> = {
   'filter.label': 'Filtrar por Stack Tecnológico',
   'filter.cloud': 'Cloud',
   'filter.ai': 'IA & LLMs',
-  'filter.python': 'Python',
+  'filter.research': 'Research',
+  'filter.personal': 'Personal',
   'filter.serverless': 'Serverless',
-  'filter.others': 'Others',
-  'filter.kubernetes': 'Kubernetes',
 
   // AGNS
   'agns.title': 'AGNS',
@@ -62,12 +61,12 @@ export const es: Record<string, string> = {
   'speaking.euroscipy.sub': 'Python Científico',
 
   // Footer
-  'footer.copyright': 'DANIEL RESEARCH LAB.',
+  'footer.copyright': 'DANIEL ALEJANDRO COLL TEJEDA',
 
   // Bottom Nav
   'nav.timeline': 'Cronología',
   'nav.projects': 'Proyectos',
-  'nav.contact': 'Contactar a Daniel',
+  'nav.contact': 'Contactar',
 
   // Modal
   'modal.title': 'Detalles del Proyecto',
@@ -113,7 +112,11 @@ export const es: Record<string, string> = {
   // Timeline - Soundless
   'timeline.soundless.title': 'Soundless',
   'timeline.soundless.description': 'Plataforma de ciencia ciudadana que correlaciona la contaminación acústica urbana con la salud del sueño. 50 participantes reales, recopilación de datos móvil + wearable.',
-  'timeline.f1.label': 'F1 Oracle Beta',
+
+  // Timeline - F1 Oracle
+  'timeline.f1.date': '2025',
+  'timeline.f1.title': 'F1 Oracle',
+  'timeline.f1.description': 'Motor de predicción de carreras de F1 en tiempo real usando LSTM. Predicción del ganador con 100% de precisión y MAE de ~2.3 posiciones en 2024.',
 
   // Timeline - Core Contributions
   'timeline.core.title': 'Contribuciones Open Source',

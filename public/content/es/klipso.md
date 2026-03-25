@@ -1,34 +1,43 @@
 # Klipso — Plataforma de Clips Virales con IA
 
-**Klipso** es una plataforma SaaS full-stack diseñada para transformar autónomamente vídeos de larga duración de YouTube en clips cortos (formato 9:16) con índices altísimos de retención para TikTok, Reels y Shorts. Los creadores de contenido solo introducen una URL y sus parámetros; Klipso orquesta de forma asíncrona un exhaustivo *pipeline* de inteligencia artificial—desde la transcripción acústica hasta el recorte automatizado (tracking) y renderización de subtítulos.
+[![En Producción](https://img.shields.io/badge/Live-klipso.vercel.app-000000?style=for-the-badge&logo=vercel)](https://klipso.vercel.app/)
 
-### Cómo Funciona
+**Klipso** es una plataforma SaaS *full-stack* de nivel de producción que arquitecté y desarrollé íntegramente de forma independiente. El sistema transforma de manera autónoma vídeos de larga duración de YouTube en clips verticales (9:16) de alta retención, optimizados para TikTok, Reels y Shorts.
 
-El flujo es íntegramente *end-to-end* y opera en GPUs bajo demanda en el cloud, abstrayendo por completo necesidades computacionales pesadas en los dispositivos de los usuarios consumibles:
+Mediante la orquestación de un complejo pipeline de IA multimodal en la nube, Klipso abstrae horas de edición manual, permitiendo a los creadores de contenido generar activos virales con un solo clic.
 
-1. **Ingesta y Transcripción Fonética**: Recupera asíncronamente en calidad 1080p con *yt-dlp*. La tecnología OpenAI Whisper elabora transcripciones precisas, ancladas meticulosamente a nivel de palabra con marcas de tiempo (timestamps).
-2. **Identificación de Momentum de Viralización**: La redacción textual se inyecta en la API Google Gemini que evalúa heurísticas complejas de viralidad algorítmica identificando los bloques lógicos idóneos para la difusión social.
-3. **Diarización Diálogos (Speaker Diarization)**: La red profunda de procesamiento acústico PyAnnote reconoce, cataloga e independiza de facto múltiples voces a lo largo de la duración de cada bloque procesado.
-4. **Tracking Facial (Smart Crop)**: Empleando la arquitectura MediaPipe ejecuta procesamiento y telemetría facial continua; un esquema algorítmico determinista reenfoca y encuadra activamente las facciones hablantes para las normativas 9:16.
-5. **Post-Procesamiento Global**: Herramientas integradas en FFmpeg escalan nativamente a 1080×1920 y se sobreponen los estilos y renderizaciones subtituladas, generando listos binarios aptos para producción de redes sociales en formatos ultra portables mp4.
+### El Pipeline de IA Multimodal
 
-### Arquitectura Serveless Distribuida
+El núcleo de Klipso es un motor de inferencia distribuido que fusiona procesamiento de audio, comprensión del lenguaje natural (NLP) y visión computacional para replicar las decisiones de un editor humano:
 
-Klipso se erige sobre un enfoque nativo sin servidores y dividido en tres capas principales escalables:
+1.  **Ingesta Robusta:** Capa de extracción personalizada basada en `yt-dlp` con rotación avanzada de proxies y enmascaramiento de IP para obtener flujos de origen en 1080p de forma fiable, evitando protecciones dinámicas de bots.
+2.  **Análisis Acústico y Semántico:** El audio se procesa mediante **OpenAI Whisper** para obtener una transcripción con marcas de tiempo a nivel de palabra. El resultado se inyecta en **Google Gemini**, que actúa como un motor de razonamiento narrativo para identificar cambios emocionales, remates y "hooks" de alta retención.
+3.  **Tracking Facial con Identificación de Hablante:** La plataforma resuelve el encuadre dinámico fusionando dos modalidades de IA. **PyAnnote Audio** realiza la diarización de hablantes (quién habla y cuándo), mientras que **MediaPipe** ejecuta la detección facial espacial. Un algoritmo determinista propio mapea la firma de audio del hablante activo con su respectivo cuadro delimitador visual.
+4.  **Renderizado Cinemático:** En lugar de cortes estáticos, el pipeline calcula movimientos de cámara suaves mediante interpolación matemática. **FFmpeg** ejecuta el renderizado final acelerado por hardware, aplicando el recorte dinámico, reescalando a 1080×1920 mediante filtros Lanczos e integrando subtítulos estilizados.
 
-- **Frontend Integrado**: Aplicación React 19 junto a Vite y Tailwind CSS desplegada sobre Vercel. Cuenta con acceso en portal de usuario, validaciones, conexión de pagos vía pasarelas de Stripe y portabilidad multinacional en 7 iteraciones de idioma de UI (i18n).
-- **Control de Flujos Operativos (Backend)**: Funciones lógicas sobre Vercel en lenguaje Python coordinan las integraciones asíncronas de base de datos Firebase y la activación despachadora de las directrices hacia las granjas de cómputo en Kaggle y pasadores Webhook.
-- **Procesamiento de Unidades GPU T4**: Inferencia tensorial instanciada y operada sobre GPUs en Kaggle; los artefactos consumibles y completados se alojan dinámicamente en *buckets* de clase S3 a través del sistema Cloudflare R2 sin cargas económicas de Egress/Data Transfer.
+### Arquitectura Cloud-Native
 
-### Sistema Operativo de Transacciones Financieras y Monetización Bancaria
+Para soportar cargas de trabajo intensivas en GPU y garantizar una experiencia de usuario fluida, diseñé una arquitectura *serverless* orientada a eventos y altamente escalable:
 
-Acreditación introductoria orientada de 50 créditos bonificados de registro inicial. Posteriormente el gasto informático tasará la utilización computacional evaluada en bloques de fuente origen, a una tasación de 1 crédito por 15 minutos en origen, y adicionalmente de 1 crédito en clips computados de retorno para el creador. Optimizaciones HD de resample incurren primas calculadas. Aprovisionamiento seguro garantizado para devolución íntegra durante averías intermitentes y retornos de *callbacks*.
+*   **Frontend (React 19 & Vite):** Una SPA moderna y responsiva que utiliza Tailwind CSS y Framer Motion. Incluye un panel de control completo, consulta de estado de trabajos en tiempo real e internacionalización (i18n) en 7 idiomas.
+*   **API Serverless (Vercel):** Funciones en Python que gestionan el enrutamiento de la API, autenticación segura JWT vía Firebase y procesamiento asíncrono de webhooks.
+*   **Cola de Trabajos Distribuida:** Firebase Realtime Database actúa como el sistema nervioso central, gestionando el bloqueo atómico de tareas, el encolamiento distribuido y la sincronización de estado en tiempo real entre el frontend y los workers de GPU.
+*   **Cluster de Cómputo GPU:** Las tareas pesadas de inferencia de IA se despachan de forma asíncrona a una flota de GPUs en la nube (NVIDIA T4), garantizando un alto rendimiento y entornos de ejecución aislados.
+*   **Almacenamiento en el Edge:** Los activos procesados se transmiten directamente a **Cloudflare R2** (compatible con S3), aprovechando la ausencia de tasas de salida de datos (*zero-egress*) y proporcionando a los usuarios URLs de descarga prefirmadas de baja latencia.
 
-### Tracción e Impacto Cuantitativo
+### Ingeniería de Software y Monetización
 
-- **Sobrepasados 2.500 renders automáticos**, en funcionamiento
-- **Presencia habitual recurrente de más de 50 agencias** y productores influyentes
-- **Ingresos autogestionados de flujos con Stripe** (suscripciones *tier*, bonos independientes)
+Más allá de la IA, implementé una lógica de negocio robusta para manejar tráfico real:
+*   **Sistema de Créditos Atómico:** Economía basada en créditos con transacciones atómicas de Firebase. Los créditos se reservan al enviar el trabajo y solo se deducen tras un renderizado exitoso, garantizando que el usuario nunca pierda créditos por fallos de infraestructura.
+*   **Webhooks de Pago Idempotentes:** Integración total con **Stripe** para paquetes de un solo uso y suscripciones mensuales. El backend emplea claves de idempotencia estrictas para procesar los webhooks de Stripe, evitando condiciones de carrera o duplicidad de créditos.
+*   **Tolerancia a Fallos:** Sistema de limpieza automática de colas que detecta trabajos bloqueados, libera *deadlocks* y notifica al equipo de soporte mediante correos integrados de Brevo con logs de ejecución sanitizados.
 
-### Tecnologías Destacadas
-`Python` · `React 19` · `Whisper` · `Gemini API` · `MediaPipe` · `PyAnnote` · `FFmpeg` · `Firebase` · `Stripe` · `Cloudflare R2` · `Kaggle GPU`
+### Tracción en el Mundo Real
+
+Klipso no es solo una prueba de concepto; es un negocio operativo utilizado activamente por creadores y agencias de marketing:
+*   **+2.500 clips** virales generados con éxito en producción.
+*   **+50 usuarios** activos y recurrentes.
+*   Generando ingresos automatizados a través de suscripciones procesadas por Stripe.
+
+### Tecnologías
+`React 19` · `TypeScript` · `Python` · `Serverless` · `OpenAI Whisper` · `Gemini API` · `MediaPipe` · `PyAnnote` · `FFmpeg` · `Firebase` · `Stripe` · `Cloudflare R2`

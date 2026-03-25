@@ -2,7 +2,7 @@
 
 Knowledge dissemination is a core pillar of my research methodology. I regularly present at premier international technical conferences, demystifying complex distributed systems and cloud architecture concepts into actionable, highly practical insights for the broader engineering community.
 
-### PyConEs 2025 — Seville, Spain
+### PyConEs 2025 — Sevilla, Spain
 
 **Talk**: *Multi-Cloud Serverless Parallel Programming in Python*
 

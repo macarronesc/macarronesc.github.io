@@ -6,9 +6,10 @@ import { useThemeStyles } from '../hooks/useThemeStyles';
 interface BottomNavProps {
   view: 'grid' | 'timeline';
   onToggleView: () => void;
+  onContactClick: () => void;
 }
 
-export function BottomNav({ view, onToggleView }: BottomNavProps) {
+export function BottomNav({ view, onToggleView, onContactClick }: BottomNavProps) {
   const { t } = useLanguage();
   const s = useThemeStyles();
 
@@ -27,7 +28,7 @@ export function BottomNav({ view, onToggleView }: BottomNavProps) {
         {view === 'grid' ? t('nav.timeline') : t('nav.projects')}
       </button>
       <div className={`w-px h-5 ${s.bottomDivider} mx-1`}></div>
-      <button className={`flex items-center gap-2 px-5 py-2.5 ${s.bottomAccent} rounded-full font-bold text-xs transition-colors`}>
+      <button onClick={onContactClick} className={`flex items-center gap-2 px-5 py-2.5 ${s.bottomAccent} rounded-full font-bold text-xs transition-colors`}>
         <Mail className="w-4 h-4" /> {t('nav.contact')}
       </button>
     </motion.nav>

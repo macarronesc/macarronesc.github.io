@@ -9,10 +9,9 @@ export const en: Record<string, string> = {
   'filter.label': 'Filter by Tech Stack',
   'filter.cloud': 'Cloud',
   'filter.ai': 'AI & LLMs',
-  'filter.python': 'Python',
+  'filter.research': 'Research',
+  'filter.personal': 'Personal',
   'filter.serverless': 'Serverless',
-  'filter.others': 'Others',
-  'filter.kubernetes': 'Kubernetes',
 
   // AGNS
   'agns.title': 'AGNS',
@@ -62,12 +61,12 @@ export const en: Record<string, string> = {
   'speaking.euroscipy.sub': 'Scientific Python',
 
   // Footer
-  'footer.copyright': 'DANIEL RESEARCH LAB.',
+  'footer.copyright': 'DANIEL ALEJANDRO COLL TEJEDA',
 
   // Bottom Nav
   'nav.timeline': 'Timeline',
   'nav.projects': 'Projects',
-  'nav.contact': 'Contact Daniel',
+  'nav.contact': 'Contact',
 
   // Modal
   'modal.title': 'Project Details',
@@ -113,7 +112,11 @@ export const en: Record<string, string> = {
   // Timeline - Soundless
   'timeline.soundless.title': 'Soundless',
   'timeline.soundless.description': 'Citizen science platform correlating urban noise pollution with sleep health. 50 real-world participants, mobile + wearable data collection.',
-  'timeline.f1.label': 'F1 Oracle Beta',
+
+  // Timeline - F1 Oracle
+  'timeline.f1.date': '2025',
+  'timeline.f1.title': 'F1 Oracle',
+  'timeline.f1.description': 'Real-time F1 race prediction engine using LSTM. 100% winner prediction accuracy and ~2.3 positions MAE in 2024 season.',
 
   // Timeline - Core Contributions
   'timeline.core.title': 'Core Contributions',
