@@ -18,7 +18,7 @@ export function BottomNav({ view, onToggleView, onContactClick }: BottomNavProps
       initial={{ y: 60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: 'spring', bounce: 0.15, duration: 0.5, delay: 0.3 }}
-      className={`fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 ${s.bottomNavBg} p-2 rounded-full shadow-2xl backdrop-blur-lg border z-40 transition-colors duration-300`}
+      className={`fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 ${s.bottomNavBg} p-2 rounded-full shadow-2xl backdrop-blur-xl border z-40 transition-colors duration-300`}
     >
       <button
         onClick={onToggleView}

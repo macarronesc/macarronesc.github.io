@@ -167,7 +167,12 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
       transition={{ duration: 0.3 }}
       className="space-y-16 relative py-12 max-w-2xl mx-auto"
     >
-      <div className={`absolute left-1/2 top-0 bottom-0 w-px ${s.tlLine} -translate-x-1/2 hidden md:block`}></div>
+      <motion.div
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+        className={`absolute left-1/2 top-0 bottom-0 w-px ${s.tlLine} -translate-x-1/2 hidden md:block origin-top`}
+      />
 
       {items.map((item, idx) => (
         <motion.div
@@ -175,9 +180,9 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
           initial={{ opacity: 0, x: item.side === 'left' ? -20 : 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, delay: 0.08 * idx }}
-          className="relative pl-8 md:pl-0"
+          className="relative pl-8 md:pl-0 group"
         >
-          <div className={`absolute left-0 md:left-1/2 top-1 md:-translate-x-1/2 w-3 h-3 rounded-full ${s.tlDot} border-4 z-10 box-content`}></div>
+          <div className={`absolute left-0 md:left-1/2 top-1 md:-translate-x-1/2 w-3 h-3 rounded-full ${s.tlDot} border-4 z-10 box-content transition-all duration-300 group-hover:ring-4 ${s.dark ? 'group-hover:ring-zinc-700/50' : 'group-hover:ring-zinc-300/50'}`}></div>
           <div className={item.side === 'left' ? 'md:w-1/2 md:pr-12 md:text-right ml-auto md:ml-0' : 'md:w-1/2 md:pl-12 md:ml-auto'}>
             <span className={`text-[10px] font-black tracking-widest ${item.dateColor ?? s.tlMuted} block mb-2 uppercase`}>{item.date}</span>
             {item.content}

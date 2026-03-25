@@ -86,9 +86,14 @@ export default function ProjectModal({ projectId, onClose }: ProjectModalProps) 
                   <div className={`animate-spin rounded-full h-8 w-8 border-b-2 ${dark ? 'border-white' : 'border-black'}`} />
                 </div>
               ) : (
-                <article className={`prose max-w-none prose-headings:tracking-tight prose-img:rounded-xl prose-img:shadow-sm prose-p:text-justify ${dark ? 'prose-invert prose-zinc' : 'prose-zinc prose-a:text-blue-600 hover:prose-a:text-blue-500'}`}>
+                <motion.article
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className={`prose max-w-none prose-headings:tracking-tight prose-img:rounded-xl prose-img:shadow-sm prose-p:text-justify ${dark ? 'prose-invert prose-zinc' : 'prose-zinc prose-a:text-blue-600 hover:prose-a:text-blue-500'}`}
+                >
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
-                </article>
+                </motion.article>
               )}
             </div>
           </motion.div>

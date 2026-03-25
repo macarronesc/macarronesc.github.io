@@ -81,8 +81,8 @@ export function useThemeStyles() {
       footerMuted: dark ? 'text-zinc-600' : 'text-zinc-400',
 
       // Bottom Nav
-      bottomNavBg: dark ? 'bg-white/95 text-black border-black/10' : 'bg-black/95 text-white border-white/10',
-      bottomBtn: dark ? 'hover:bg-zinc-200' : 'hover:bg-zinc-800',
+      bottomNavBg: dark ? 'bg-white/90 text-black border-white/20' : 'bg-black/90 text-white border-white/10',
+      bottomBtn: dark ? 'hover:bg-zinc-200/80' : 'hover:bg-zinc-800/80',
       bottomAccent: dark ? 'bg-black text-white hover:bg-zinc-900' : 'bg-white text-black hover:bg-zinc-100',
       bottomDivider: dark ? 'bg-zinc-300' : 'bg-zinc-700',
 
