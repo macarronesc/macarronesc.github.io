@@ -62,11 +62,16 @@ export const es: Record<string, string> = {
 
   // Footer
   'footer.copyright': 'DANIEL ALEJANDRO COLL TEJEDA',
+  'footer.cv': 'Currículum',
 
   // Bottom Nav
   'nav.timeline': 'Cronología',
   'nav.projects': 'Proyectos',
   'nav.contact': 'Contactar',
+
+  // Contacto
+  'contact.title': 'Contacto',
+  'contact.description': 'No dudes en ponerte en contacto para cualquier consulta:',
 
   // Modal
   'modal.title': 'Detalles del Proyecto',

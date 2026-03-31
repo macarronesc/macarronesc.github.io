@@ -62,11 +62,16 @@ export const en: Record<string, string> = {
 
   // Footer
   'footer.copyright': 'DANIEL ALEJANDRO COLL TEJEDA',
+  'footer.cv': 'Resume',
 
   // Bottom Nav
   'nav.timeline': 'Timeline',
   'nav.projects': 'Projects',
   'nav.contact': 'Contact',
+
+  // Contact
+  'contact.title': 'Contact',
+  'contact.description': 'Feel free to reach out for any inquiries:',
 
   // Modal
   'modal.title': 'Project Details',

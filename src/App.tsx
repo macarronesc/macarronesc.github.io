@@ -1,6 +1,7 @@
 import { useState, lazy, Suspense } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useThemeStyles } from './hooks/useThemeStyles';
+import { useLanguage } from './i18n';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { FilterBar } from './components/FilterBar';
@@ -19,6 +20,7 @@ export default function App() {
   const [view, setView] = useState<'grid' | 'timeline'>('grid');
   const [showContact, setShowContact] = useState(false);
   const [copied, setCopied] = useState(false);
+  const { t } = useLanguage();
   const s = useThemeStyles();
 
   const handleFilterClick = (filter: string) => {
@@ -75,12 +77,12 @@ export default function App() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-bold">Contact</h3>
+                <h3 className="text-lg font-bold">{t('contact.title')}</h3>
                 <button onClick={() => setShowContact(false)} className={`p-1 rounded-lg ${s.dark ? 'hover:bg-white/10' : 'hover:bg-black/10'} transition-colors`}>
                   <X className="w-5 h-5" />
                 </button>
               </div>
-              <p className={`text-sm ${s.dark ? 'text-white/60' : 'text-black/60'} mb-4`}>Feel free to reach out for any inquiries:</p>
+              <p className={`text-sm ${s.dark ? 'text-white/60' : 'text-black/60'} mb-4`}>{t('contact.description')}</p>
               <div className={`flex items-center gap-2 p-3 rounded-xl ${s.dark ? 'bg-white/5' : 'bg-black/5'}`}>
                 <span className="flex-1 font-mono text-sm">alegandro2507@gmail.com</span>
                 <button

@@ -4,8 +4,9 @@ import { useLanguage } from '../i18n';
 import { useThemeStyles } from '../hooks/useThemeStyles';
 
 export const Footer = memo(function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const s = useThemeStyles();
+  const cvUrl = language === 'es' ? '/CV-DanielColl-ES.pdf' : '/CV-DanielColl.pdf';
 
   return (
     <footer className={`w-full py-6 px-6 border-t ${s.footerBorder} mt-12 transition-colors duration-300`}>
@@ -14,10 +15,11 @@ export const Footer = memo(function Footer() {
           {[
             { name: 'Github', url: 'https://github.com/macarronesc' },
             { name: 'LinkedIn', url: 'https://www.linkedin.com/in/daniel-alejandro-coll-tejeda/' },
-            { name: 'Scholar', url: 'https://scholar.google.com/scholar?q=Daniel+Coll+Tejeda' }
+            { name: 'Scholar', url: 'https://scholar.google.com/scholar?q=Daniel+Coll+Tejeda' },
+            { name: t('footer.cv'), url: cvUrl }
           ].map((l) => (
             <a
-              key={l.name}
+              key={l.url}
               className={`${s.footerText} font-bold tracking-widest text-[10px] transition-all uppercase relative after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-px after:bg-current after:transition-all after:duration-300 hover:after:w-full hover:after:left-0`}
               href={l.url}
               target="_blank"
