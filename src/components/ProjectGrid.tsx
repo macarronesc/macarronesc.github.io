@@ -21,7 +21,7 @@ function getIcon(id: string) {
   return projects.find((p) => p.id === id)!.icon;
 }
 
-type ProjectId = 'agns' | 'klipso' | 'lithops' | 'pyrun' | 'soundless' | 'f1' | 'core' | 'speaking';
+type ProjectId = 'literag' | 'klipso' | 'lithops' | 'pyrun' | 'soundless' | 'f1' | 'core' | 'speaking';
 
 interface GridItem {
   id: ProjectId;
@@ -30,7 +30,7 @@ interface GridItem {
 
 // Default layout configuration
 const defaultLayout: GridItem[] = [
-  { id: 'agns', size: 'large' },
+  { id: 'literag', size: 'large' },
   { id: 'klipso', size: 'medium' },
   { id: 'lithops', size: 'medium' },
   { id: 'pyrun', size: 'medium' },
@@ -46,7 +46,7 @@ function getSpanClasses(visibleItems: GridItem[]): Record<ProjectId, string> {
 
   // Default spans (full layout)
   const spans: Record<ProjectId, string> = {
-    agns: 'md:col-span-8 md:row-span-2',
+    literag: 'md:col-span-8 md:row-span-2',
     klipso: 'md:col-span-4 md:row-span-2',
     lithops: 'md:col-span-4 md:row-span-2',
     pyrun: 'md:col-span-4 md:row-span-2',
@@ -60,7 +60,7 @@ function getSpanClasses(visibleItems: GridItem[]): Record<ProjectId, string> {
   if (count === 8) return spans;
 
   // Calculate total columns needed and adjust
-  const hasLargeItems = ids.some(id => ['agns'].includes(id));
+  const hasLargeItems = ids.some(id => ['literag'].includes(id));
   const hasMediumItems = ids.filter(id => ['klipso', 'lithops', 'pyrun'].includes(id));
   const hasSmallItems = ids.filter(id => ['soundless', 'f1', 'speaking'].includes(id));
   const hasWideItems = ids.includes('core');
@@ -138,12 +138,12 @@ function getSpanClasses(visibleItems: GridItem[]): Record<ProjectId, string> {
   // Five or more items - use smart distribution
   if (count >= 5) {
     // Check if we have the main large items
-    const hasAgns = ids.includes('agns');
+    const hasLiteRAG = ids.includes('literag');
     const mediumCount = hasMediumItems.length;
     const smallCount = hasSmallItems.length;
 
-    if (!hasAgns) {
-      // No AGNS - redistribute medium items to fill
+    if (!hasLiteRAG) {
+      // No literag - redistribute medium items to fill
       hasMediumItems.forEach((id, idx) => {
         if (mediumCount <= 2) {
           spans[id] = 'md:col-span-6 md:row-span-2';
@@ -198,7 +198,7 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
   const { t } = useLanguage();
   const s = useThemeStyles();
 
-  const AgnsIcon = getIcon('agns');
+  const LiteRAGIcon = getIcon('literag');
   const KlipsoIcon = getIcon('klipso');
   const LithopsIcon = getIcon('lithops');
   const PyrunIcon = getIcon('pyrun');
@@ -226,23 +226,23 @@ export function ProjectGrid({ activeFilter, onSelectProject }: ProjectGridProps)
       exit="exit"
       className="grid grid-cols-1 md:grid-cols-12 md:auto-rows-[minmax(100px,auto)] gap-6"
     >
-      {/* AGNS — Large card */}
-      {isProjectVisible('agns', activeFilter) && (
-        <motion.div variants={cardV} onClick={() => onSelectProject('agns')} className={s.getCardClass(0, spans.agns) + ' md:flex-row gap-8'}>
+      {/* LiteRAG — Large card */}
+      {isProjectVisible('literag', activeFilter) && (
+        <motion.div variants={cardV} onClick={() => onSelectProject('literag')} className={s.getCardClass(0, spans.literag) + ' md:flex-row gap-8'}>
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-6">
-              <span className={`${s.iconBg(0)} p-2.5 rounded-xl`}><AgnsIcon className={`w-6 h-6 ${s.iconColor(0)}`} /></span>
-              <h2 className="text-3xl font-black tracking-tight">{t('agns.title')}</h2>
+              <span className={`${s.iconBg(0)} p-2.5 rounded-xl`}><LiteRAGIcon className={`w-6 h-6 ${s.iconColor(0)}`} /></span>
+              <h2 className="text-3xl font-black tracking-tight">{t('literag.title')}</h2>
             </div>
-            <p className={`${s.textMuted(0)} text-sm mb-8 leading-relaxed max-w-md text-justify`}>{t('agns.description')}</p>
+            <p className={`${s.textMuted(0)} text-sm mb-8 leading-relaxed max-w-md text-justify`}>{t('literag.description')}</p>
             <div className="flex flex-wrap gap-2">
               {['PyTorch', 'RAG', 'LLM'].map((tag) => <span key={tag} className={`${s.tagBg(0)} text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider`}>{tag}</span>)}
             </div>
           </div>
           <div className={`md:w-56 flex flex-col justify-center items-center ${s.statBg(0)} rounded-2xl p-6 border`}>
-            <span className={`text-[10px] font-bold ${s.textSubtle(0)} uppercase tracking-widest mb-2`}>{t('agns.stat.label')}</span>
-            <span className={`text-5xl font-black ${s.statBoxText(0)} tracking-tighter`}>{t('agns.stat.value')}</span>
-            <span className={`text-[10px] font-bold ${s.textMuted(0)} mt-3 uppercase tracking-wider`}>{t('agns.stat.sub')}</span>
+            <span className={`text-[10px] font-bold ${s.textSubtle(0)} uppercase tracking-widest mb-2`}>{t('literag.stat.label')}</span>
+            <span className={`text-5xl font-black ${s.statBoxText(0)} tracking-tighter`}>{t('literag.stat.value')}</span>
+            <span className={`text-[10px] font-bold ${s.textMuted(0)} mt-3 uppercase tracking-wider`}>{t('literag.stat.sub')}</span>
           </div>
         </motion.div>
       )}

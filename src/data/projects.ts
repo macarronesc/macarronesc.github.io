@@ -8,7 +8,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  { id: 'agns', title: 'AGNS', tech: ['AI & LLMs', 'Research'], icon: Brain },
+  { id: 'literag', title: 'LiteRAG', tech: ['AI & LLMs', 'Research'], icon: Brain },
   { id: 'klipso', title: 'Klipso', tech: ['AI & LLMs', 'Personal', 'Cloud'], icon: Clapperboard },
   { id: 'lithops', title: 'Lithops', tech: ['Serverless', 'Research', 'Cloud'], icon: CloudCog },
   { id: 'pyrun', title: 'PyRun Cloud', tech: ['AI & LLMs', 'Research', 'Serverless', 'Cloud'], icon: Rocket },

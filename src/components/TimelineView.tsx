@@ -24,7 +24,7 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
   const s = useThemeStyles();
 
   const KlipsoIcon = getIcon('klipso');
-  const AgnsIcon = getIcon('agns');
+  const LiteRAGIcon = getIcon('literag');
   const LithopsIcon = getIcon('lithops');
   const SoundlessIcon = getIcon('soundless');
   const F1Icon = getIcon('f1');
@@ -82,16 +82,16 @@ export default function TimelineView({ onSelectProject }: TimelineViewProps) {
       ),
     },
 
-    // 5. AGNS (Mid 2025-2026) - LEFT
+    // 5. LiteRAG (Mid 2025-2026) - LEFT
     {
-      date: t('timeline.agns.date'), side: 'left',
+      date: t('timeline.literag.date'), side: 'left',
       content: (
-        <div className={`${s.tlCardBg2} p-6 rounded-2xl border text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('agns')}>
+        <div className={`${s.tlCardBg2} p-6 rounded-2xl border text-left md:text-right cursor-pointer transition-transform hover:scale-[1.02]`} onClick={() => onSelectProject('literag')}>
           <div className="flex justify-between items-center mb-4 md:flex-row-reverse">
-            <h3 className="text-2xl font-black tracking-tight">{t('timeline.agns.title')}</h3>
-            <AgnsIcon className="w-6 h-6" />
+            <h3 className="text-2xl font-black tracking-tight">{t('timeline.literag.title')}</h3>
+            <LiteRAGIcon className="w-6 h-6" />
           </div>
-          <p className={`${s.tlSubText} text-sm mb-4 text-justify`}>{t('timeline.agns.description')}</p>
+          <p className={`${s.tlSubText} text-sm mb-4 text-justify`}>{t('timeline.literag.description')}</p>
           <div className={`h-1.5 w-full ${s.tlProgressBg} rounded-full overflow-hidden`}>
             <div className={`h-full ${s.tlProgressFill} w-[99%]`}></div>
           </div>

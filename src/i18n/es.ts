@@ -13,12 +13,12 @@ export const es: Record<string, string> = {
   'filter.personal': 'Personal',
   'filter.serverless': 'Serverless',
 
-  // AGNS
-  'agns.title': 'AGNS',
-  'agns.description': 'Sistema Zero-LLM para GraphRAG que reemplaza la navegación de grafos basada en modelos por navegación algorítmica, reduciendo costes operativos un 99%.',
-  'agns.stat.label': 'Eficiencia de Coste',
-  'agns.stat.value': '-99%',
-  'agns.stat.sub': 'Consultas LLM',
+  // LiteRAG
+  'literag.title': 'LiteRAG',
+  'literag.description': 'Sistema Zero-LLM para GraphRAG que reemplaza la navegación de grafos basada en modelos por navegación algorítmica, reduciendo costes operativos un 99%.',
+  'literag.stat.label': 'Eficiencia de Coste',
+  'literag.stat.value': '-99%',
+  'literag.stat.sub': 'Consultas LLM',
 
   // Klipso
   'klipso.title': 'Klipso',
@@ -84,7 +84,7 @@ export const es: Record<string, string> = {
   'timeline.lithops.date': '2022 — 2024',
   'timeline.soundless.date': '2024 — 2025',
   'timeline.pyrun.date': '2025 — 2026',
-  'timeline.agns.date': 'Mediados 2025 — 2026',
+  'timeline.literag.date': 'Mediados 2025 — 2026',
   'timeline.klipso.date': 'Inicio 2026',
   'timeline.core.date': '2026',
 
@@ -102,9 +102,9 @@ export const es: Record<string, string> = {
   'timeline.klipso.description': 'Plataforma de clips virales con IA. Más de 2.5k clips generados para más de 50 creadores usando Whisper, Gemini y face tracking.',
   'timeline.klipso.status': 'Producción Activa',
 
-  // Timeline - AGNS
-  'timeline.agns.title': 'AGNS',
-  'timeline.agns.description': 'Sistema Zero-LLM para GraphRAG. Reducción del 99% en costes mediante navegación algorítmica de grafos y cadenas de razonamiento.',
+  // Timeline - LiteRAG
+  'timeline.literag.title': 'LiteRAG',
+  'timeline.literag.description': 'Sistema Zero-LLM para GraphRAG. Reducción del 99% en costes mediante navegación algorítmica de grafos y cadenas de razonamiento.',
 
   // Timeline - PyRun
   'timeline.pyrun.title': 'PyRun Cloud',

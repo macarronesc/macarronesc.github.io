@@ -13,12 +13,12 @@ export const en: Record<string, string> = {
   'filter.personal': 'Personal',
   'filter.serverless': 'Serverless',
 
-  // AGNS
-  'agns.title': 'AGNS',
-  'agns.description': 'Zero-LLM GraphRAG system that replaces expensive model-driven graph traversal with algorithmic navigation, cutting operational costs by 99%.',
-  'agns.stat.label': 'Cost Efficiency',
-  'agns.stat.value': '-99%',
-  'agns.stat.sub': 'LLM Queries',
+  // LiteRAG
+  'literag.title': 'LiteRAG',
+  'literag.description': 'Zero-LLM GraphRAG system that replaces expensive model-driven graph traversal with algorithmic navigation, cutting operational costs by 99%.',
+  'literag.stat.label': 'Cost Efficiency',
+  'literag.stat.value': '-99%',
+  'literag.stat.sub': 'LLM Queries',
 
   // Klipso
   'klipso.title': 'Klipso',
@@ -84,7 +84,7 @@ export const en: Record<string, string> = {
   'timeline.lithops.date': '2022 — 2024',
   'timeline.soundless.date': '2024 — 2025',
   'timeline.pyrun.date': '2025 — 2026',
-  'timeline.agns.date': 'Mid 2025 — 2026',
+  'timeline.literag.date': 'Mid 2025 — 2026',
   'timeline.klipso.date': 'Early 2026',
   'timeline.core.date': '2026',
 
@@ -102,9 +102,9 @@ export const en: Record<string, string> = {
   'timeline.klipso.description': 'AI-powered viral clip platform. 2.5k+ clips generated for 50+ content creators using Whisper, Gemini, and face-tracking AI.',
   'timeline.klipso.status': 'Active Production',
 
-  // Timeline - AGNS
-  'timeline.agns.title': 'AGNS',
-  'timeline.agns.description': 'Zero-LLM GraphRAG system. 99% cost reduction through algorithmic graph traversal and reasoning chains.',
+  // Timeline - LiteRAG
+  'timeline.literag.title': 'LiteRAG',
+  'timeline.literag.description': 'Zero-LLM GraphRAG system. 99% cost reduction through algorithmic graph traversal and reasoning chains.',
 
   // Timeline - PyRun
   'timeline.pyrun.title': 'PyRun Cloud',
