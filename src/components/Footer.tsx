@@ -13,8 +13,8 @@ export const Footer = memo(function Footer() {
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 w-full max-w-[1200px] mx-auto">
         <div className="flex gap-6">
           {[
-            { name: 'Github', url: 'https://github.com/macarronesc' },
-            { name: 'LinkedIn', url: 'https://www.linkedin.com/in/daniel-alejandro-coll-tejeda/' },
+            { name: 'GitHub', url: 'https://github.com/macarronesc' },
+            { name: 'LinkedIn', url: 'https://www.linkedin.com/in/macarronesc/' },
             { name: 'Scholar', url: 'https://scholar.google.com/scholar?q=Daniel+Coll+Tejeda' },
             { name: t('footer.cv'), url: cvUrl }
           ].map((l) => (

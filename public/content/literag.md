@@ -1,45 +1,36 @@
-# LiteRAG: Adaptive Graph-Native Search
+# LiteRAG — Graph retrieval without LLM-guided navigation
 
-**LiteRAG** is a next-generation GraphRAG framework designed to solve the "prohibitive cost" problem of current graph-based retrieval systems. While industry standards like Microsoft GraphRAG rely on expensive LLM-driven "Map-Reduce" summarization or agentic "graph-walking," LiteRAG introduces a **Zero-LLM navigation system** driven by mathematical algorithms.
+**My role:** Framework architect & implementation author · **Status:** Research; paper submitted to EMNLP 2026
 
-The result is a system that maintains constant-time ($O(1)$) latency and sub-cent costs regardless of dataset size, without sacrificing multi-hop reasoning accuracy.
+📄 [Read the paper: LiteRAG: Cost-Efficient Graph-Based Retrieval-Augmented Generation](https://arxiv.org/abs/2609.10239)
 
-> 📄 **Academic Status:** Research paper currently submitted to **EMNLP 2026**. I architected the framework and authored 100% of the implementation code.
+LiteRAG explores a practical question: **can graph-based retrieval support multi-hop questions without asking a language model to decide every traversal step?** I designed and implemented a framework that moves graph navigation into algorithms, aiming to reduce retrieval cost while preserving useful relationships in the context sent to an answer model.
 
-### 🚀 The Performance Breakthrough
-Compared to the current Industrial SOTA (Microsoft GraphRAG DRIFT) on a 1,280-document corpus:
+“LLM-free” describes the **navigation stage**, not a claim that answer generation, graph construction or evaluation never uses language models.
 
-| Metric | LiteRAG (Ours) | GraphRAG (DRIFT) | Improvement |
-| :--- | :--- | :--- | :--- |
-| **Operational Cost** | **€0.01** | €25.28 | **99.9% Reduction** |
-| **End-to-End Latency** | **1.42s** | 142.04s | **100x Faster** |
-| **Token Footprint** | **2,291** | 6,441,013 | **~2,800x More Efficient** |
-| **Accuracy (Stotal)** | **0.798** | 0.657 | **+21.4% Better** |
+## My technical contributions
 
----
+- **Adaptive semantic expansion:** use query relevance to guide the exploration frontier instead of applying a fixed neighborhood size to every query.
+- **Community-aware hub filtering:** penalize generic, highly connected hubs that can cause semantic drift while retaining connections useful to the domain.
+- **Reasoning-chain serialization:** turn retrieved relationships into compact entity–relation chains rather than sending only disconnected text chunks.
+- **Evaluation tooling:** compare cost, latency and answer-quality scores against graph-based baselines.
 
-### 🧠 Core Architectural Contributions
+## Reported research results
 
-#### 1. Zero-LLM Parallel Graph Exploration
-The primary innovation of LiteRAG is moving the "intelligence" of graph traversal from the LLM to the graph engine itself.
-*   **Dynamic Semantic Thresholding:** Instead of a fixed search radius, LiteRAG calculates an expansion frontier based on the semantic "signal strength" of the user's query.
-*   **Community-Aware Hub Filtering:** A custom penalty function ($P_{hub}$) identifies and bypasses "generic hubs" (like the word "System") that cause semantic drift, while protecting "topic hubs" vital to the local domain.
+The project summary reports the following comparison with **Microsoft GraphRAG DRIFT on a 1,280-document corpus**:
 
-#### 2. Serialized Reasoning Chains
-Standard RAG systems saturate the context window with disjointed text chunks. LiteRAG aggregates traversed subgraphs and serializes them into **Reasoning Chains** (e.g., `Entity A —[predicate]—> Entity B`). 
-*   **Linguistic Density:** By providing explicit causal structures, we reduce the cognitive load on the LLM's attention mechanism.
-*   **Context Compression:** LiteRAG outperforms competitors using only ~2,000 tokens of context, whereas others require 100k+ tokens to reach similar reasoning depths.
+| Metric | LiteRAG | GraphRAG DRIFT |
+| :--- | :--- | :--- |
+| Reported operational cost | **€0.01** | €25.28 |
+| End-to-end latency | **1.42s** | 142.04s |
+| Evaluation score, S_total | **0.798** | 0.657 |
 
-#### 3. $O(1)$ Scalability
-By decoupling retrieval from global graph size, LiteRAG maintains a near-constant latency curve. As the dataset grows from 40 to 1,280 documents, LiteRAG latency remained flat at ~1.4s, while traditional GraphRAG latency exploded from 8s to 162s ($O(N)$).
+The evaluated range of 40–1,280 documents showed a near-flat latency curve for LiteRAG. This is **an observed result over that range**, not a proof of constant-time complexity at arbitrary graph sizes. The cost and score figures belong to the reported experimental setup; they should not be read as universal per-query pricing or accuracy guarantees.
 
----
+## Why this work matters
 
-### 🛠️ Technical Stack
-*   **Logic:** Python, NetworkX (Graph Algorithms)
-*   **ML & Embeddings:** PyTorch, Sentence-Transformers
-*   **Database:** Neo4j (Vector + Graph Indexing)
-*   **Evaluation:** LLM-as-a-Judge (Gemini 2.5 Flash Lite), ROUGE-L, Cosine Similarity
+Graph retrieval can surface relationships that a simple nearest-neighbor search misses, but LLM-guided exploration can make that context expensive. LiteRAG investigates a different division of responsibility: algorithms select the graph context, while a model can use that context to produce an answer.
 
-### 📈 Production Impact
-LiteRAG is currently in production, enabling real-time, multi-hop queries over massive technical repositories where traditional vector-based RAG failed and agentic GraphRAG was financially non-viable.
+**Academic status:** preprint available on arXiv; submitted to EMNLP 2026.
+
+**Stack:** Python · NetworkX · Neo4j · PyTorch · Sentence-Transformers · LLM-based evaluation

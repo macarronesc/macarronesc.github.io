@@ -21,7 +21,7 @@ export const Navbar = memo(function Navbar() {
           <span className="font-extrabold text-sm tracking-tight uppercase">{t('nav.title')}</span>
         </div>
         <div className="flex items-center gap-3">
-          <button onClick={s.toggleTheme} className={`p-2 rounded-full transition-colors ${s.toggleBtnBg}`} aria-label="Toggle theme">
+          <button onClick={s.toggleTheme} className={`p-2 rounded-full transition-colors ${s.toggleBtnBg}`} aria-label={t('nav.theme')}>
             <motion.div
               animate={{ rotate: s.dark ? 180 : 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -30,17 +30,14 @@ export const Navbar = memo(function Navbar() {
             </motion.div>
           </button>
           <button
-            onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
+             onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
+             aria-label={t('nav.language')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-colors text-[10px] font-bold uppercase tracking-widest ${s.toggleBtnBg}`}
           >
             <Globe className="w-3.5 h-3.5" />
             {language === 'en' ? 'ES' : 'EN'}
           </button>
           <span className={`hidden md:inline text-[10px] font-bold uppercase tracking-widest ${s.filterLabelColor}`}>{t('nav.recruiter')}</span>
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
         </div>
       </div>
     </motion.nav>

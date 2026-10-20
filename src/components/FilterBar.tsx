@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, type Variants } from 'motion/react';
 import { Filter } from 'lucide-react';
 import { useLanguage } from '../i18n';
 import { useThemeStyles } from '../hooks/useThemeStyles';
@@ -24,7 +24,7 @@ const containerVariants = {
   exit: { opacity: 0, height: 0, transition: { duration: 0.2 } }
 };
 
-const pillVariants = {
+const pillVariants: Variants = {
   hidden: { opacity: 0, scale: 0.8, y: 10 },
   visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" } },
   exit: { opacity: 0, scale: 0.8, transition: { duration: 0.15 } }
@@ -49,12 +49,13 @@ export function FilterBar({ visible, activeFilter, onFilterClick }: FilterBarPro
           </div>
           <div className="flex flex-wrap gap-2">
             {techFilters.map((f) => {
-              const key = f === 'AI & LLMs' ? 'ai' : f.toLowerCase();
+              const key = f === 'AI & LLMs' ? 'ai' : f.toLowerCase().replaceAll(' ', '-');
               return (
                 <motion.button
                   key={f}
                   variants={pillVariants}
-                  onClick={() => onFilterClick(f)}
+                   onClick={() => onFilterClick(f)}
+                   aria-pressed={activeFilter === f}
                   className={`px-4 py-2 rounded-full text-xs font-bold transition-colors duration-200 ${activeFilter === f ? s.filterBtnActive : s.filterBtnInactive}`}
                 >
                   {t(`filter.${key}`)}

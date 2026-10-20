@@ -1,129 +1,97 @@
 export const es: Record<string, string> = {
-  // Navbar
-  'nav.title': 'Portfolio de Daniel',
-  'nav.recruiter': 'Vista Recruiter Activa',
+  'nav.title': 'Daniel // Ingeniero de Software',
+  'nav.recruiter': 'Creando productos. Contribuyendo al código abierto.',
+  'nav.theme': 'Cambiar tema de color',
+  'nav.language': 'Cambiar a inglés',
+  'nav.timeline': 'Trayectoria',
+  'nav.projects': 'Proyectos',
+  'nav.contact': 'Contacto',
 
-  // Hero
-  'hero.title': 'Daniel — Investigador Cloud & IA',
-  'hero.description': 'Construyendo sistemas distribuidos de nueva generación y arquitecturas de IA optimizadas en costes. Cuatro años de investigación transformando infraestructura cloud compleja en soluciones simples, escalables y con impacto real medible.',
-  'filter.label': 'Filtrar por Stack Tecnológico',
+  'hero.title': 'Daniel — Ingeniero de Software · IA y Cloud',
+  'hero.description': 'Desarrollo productos de IA, plataformas cloud y herramientas de código abierto: desde creación de vídeos cortos y juegos de estrategia para móvil hasta computación distribuida en Python y recuperación documental. Combino experiencia investigadora con desarrollo de producto.',
+  'hero.current': 'Software Engineer en HP Barcelona',
+  'hero.current.detail': '3DaaS — Impresoras 3D como servicio · Junio de 2026–actualidad',
+  'hero.featured': 'Desarrollando actualmente: Klipso e Invade.io',
+
+  'filter.label': 'Explorar por área',
   'filter.cloud': 'Cloud',
-  'filter.ai': 'IA & LLMs',
-  'filter.research': 'Research',
+  'filter.ai': 'IA y LLMs',
+  'filter.research': 'Investigación',
   'filter.personal': 'Personal',
   'filter.serverless': 'Serverless',
+  'filter.game-development': 'Videojuegos',
+  'project.explore': 'Conocer el proyecto',
 
-  // LiteRAG
-  'literag.title': 'LiteRAG',
-  'literag.description': 'Sistema Zero-LLM para GraphRAG que reemplaza la navegación de grafos basada en modelos por navegación algorítmica, reduciendo costes operativos un 99%.',
-  'literag.stat.label': 'Eficiencia de Coste',
-  'literag.stat.value': '-99%',
-  'literag.stat.sub': 'Consultas LLM',
+  'klipso.role': 'Destacado · Creador',
+  'klipso.description': 'Edición de vídeo con IA para TikTok, Reels y Shorts. Desarrollo el producto completo: selección de momentos, reencuadre según el hablante, renderizado en GPU con subtítulos, herramientas para creadores y facturación.',
+  'klipso.stats.users.value': '100+',
+  'klipso.stats.users.label': 'Usuarios',
+  'klipso.stats.clips.value': '1.000+',
+  'klipso.stats.clips.label': 'Clips generados',
+  'klipso.stats.hours.value': '14+ h',
+  'klipso.stats.hours.label': 'Vídeo generado',
+  'klipso.evidence': 'Hitos del producto · Octubre de 2026. Desarrollo integral y mejora continua.',
 
-  // Klipso
-  'klipso.title': 'Klipso',
-  'klipso.badge': 'Escalando',
-  'klipso.description': 'Plataforma Full-Stack de IA que transforma vídeos largos de YouTube en clips virales verticales usando Whisper, Gemini y face tracking en tiempo real.',
-  'klipso.adoption': 'Adopción',
-  'klipso.clips': '2.5k+ Clips',
+  'invade.role': 'Destacado · Desarrollador',
+  'invade.description': 'Un juego de estrategia pensado para móvil: conquista territorios y mejora tu ejército. Desarrollo las batallas en tiempo real, la progresión de campaña, los retos diarios y la experiencia móvil con Godot.',
+  'invade.stats.campaign.value': '30',
+  'invade.stats.campaign.label': 'Niveles de campaña',
+  'invade.evidence': 'Campaña, desafíos diarios y expediciones de conquista. En desarrollo activo.',
 
-  // Lithops
-  'lithops.title': 'Lithops',
-  'lithops.description': 'Framework open-source Python para computación serverless multi-cloud. Orquestando más de 10k funciones paralelas en AWS, GCP y Azure.',
-  'lithops.native': 'NATIVO',
+  'literag.role': 'Investigación · Diseño y Código',
+  'literag.description': 'Investigación en GraphRAG con navegación algorítmica en lugar de recorridos guiados por LLMs. Diseñé e implementé el framework para explorar recuperación multi-hop con menor coste.',
+  'literag.stats.latency.value': '1,42 s',
+  'literag.stats.latency.label': 'Latencia del benchmark reportado',
+  'literag.evidence': 'Comparación de investigación sobre un corpus de 1.280 documentos. Artículo enviado a EMNLP 2026.',
 
-  // PyRun
-  'pyrun.title': 'PyRun Cloud',
-  'pyrun.description': 'Plataforma SaaS Full-Stack que automatiza el despliegue de infraestructura cloud para investigadores y profesionales — de código a clúster activo en minutos.',
-  'pyrun.sla': 'SLA',
-  'pyrun.users': 'Usuarios',
-
-  // Soundless
-  'soundless.title': 'Soundless',
-  'soundless.subtitle': 'Ciencia Ciudadana / Audio ML',
-
-  // F1
-  'f1.title': 'F1 Oracle',
-  'f1.subtitle': 'Motor de Predicción LSTM',
-
-  // Core
+  'pyrun.role': 'Plataforma · Líder de Desarrollo',
+  'pyrun.description': 'Un espacio web para ejecutar cargas distribuidas de Python en AWS e IBM Cloud. Lideré la automatización de entornos, la integración cloud, los paneles de ejecución y las operaciones asistidas por IA.',
+  'lithops.role': 'Código Abierto · Contribuidor',
+  'lithops.description': 'Python paralelo en entornos cloud y HPC. Mis aportaciones incluyen colas de trabajo con Kubernetes y RabbitMQ, el backend de Singularity y mejoras de fiabilidad en la ejecución.',
+  'medground.role': 'IA Aplicada · Desarrollador',
+  'medground.description': 'Prototipo RAG para documentos médicos con respuestas citadas, búsqueda híbrida y evaluación mediante LLM-as-a-judge. Creado para explorar documentos, no para tomar decisiones clínicas.',
+  'research-to-ai-video.role': 'Integración · Desarrollador',
+  'research-to-ai-video.description': 'Un flujo con revisión humana para vídeos de NotebookLM: Gemini propone metadatos, se revisan localmente y se autoriza la subida mediante la API oficial de YouTube.',
+  'spotify-to-apple-music.role': 'Automatización · Desarrollador',
+  'spotify-to-apple-music.description': 'Transfiere listas de Spotify a Apple Music con búsqueda de canciones y avisos por Telegram. Integré el flujo con GitHub Actions, partiendo de trabajo open source acreditado.',
+  'soundless.role': 'Investigación · Desarrollador Principal',
+  'soundless.description': 'Infraestructura de ciencia ciudadana para estudiar ruido y sueño. Desarrollé la aplicación Android, la integración con Fitbit, la ingesta cloud y el flujo de análisis.',
+  'f1.role': 'Personal · Investigación en ML',
+  'f1.description': 'Un experimento con LSTM para predecir la clasificación de carreras. Desarrollé el pipeline de datos, las variables por vuelta y la integración con FastF1 para estudiar patrones secuenciales.',
+  'core.role': 'Comunidad · Contribuciones',
   'core.title': 'Contribuciones Open Source',
-  'core.ollama': 'Ollama',
-  'core.ollama.sub': 'Optimizaciones de Runtime',
-  'core.gemini': 'Gemini CLI',
-  'core.gemini.sub': 'Orquestación de Herramientas',
-
-  // Speaking
+  'core.description': 'Aportaciones integradas en Lithops, Dask, Ollama y Gemini CLI, además de propuestas para MCP y Rechunker. Cambios concretos, enlaces a PR y estado de revisión.',
+  'speaking.role': 'Comunidad · Ponente',
   'speaking.title': 'Charlas Técnicas',
-  'speaking.pycon': 'PyConEs 2025',
-  'speaking.pycon.sub': 'Orquestación Cloud',
-  'speaking.euroscipy': 'EuroScipy 2025',
-  'speaking.euroscipy.sub': 'Python Científico',
+  'speaking.description': 'Comparto lo aprendido en investigación cloud: programación serverless multi-cloud en PyConES 2025 y procesamiento de datos cloud-optimized en EuroSciPy 2025.',
 
-  // Footer
+  'timeline.title': 'Experiencia e hitos seleccionados',
+  'timeline.description': 'Trabajo actual, productos personales, plataformas de investigación y contribuciones. Los periodos de los proyectos no representan fechas de empleo.',
+  'timeline.hp.date': 'Junio de 2026 — actualidad',
+  'timeline.hp.title': 'HP Barcelona · Software Engineer',
+  'timeline.hp.description': 'Trabajo en 3DaaS — Impresoras 3D como servicio. Los proyectos personales y la investigación de este portfolio son independientes de mi trabajo en HP.',
+  'timeline.invade.date': '2026 — actualidad',
+  'timeline.research-to-ai-video.date': '2026',
+  'timeline.medground.date': '2026',
+  'timeline.klipso.date': '2025 — actualidad',
+  'timeline.literag.date': '2025 — 2026',
+  'timeline.pyrun.date': '2025 — 2026',
+  'timeline.f1.date': '2025',
+  'timeline.speaking.date': 'Agosto y octubre de 2025',
+  'timeline.spotify-to-apple-music.date': 'Proyecto público desde 2024',
+  'timeline.soundless.date': 'Investigación en ciencia ciudadana',
+  'timeline.lithops.date': 'Investigación cloud y HPC · hasta 2025',
+  'timeline.core.date': 'Contribuciones continuadas',
+
   'footer.copyright': 'DANIEL ALEJANDRO COLL TEJEDA',
   'footer.cv': 'Currículum',
-
-  // Bottom Nav
-  'nav.timeline': 'Cronología',
-  'nav.projects': 'Proyectos',
-  'nav.contact': 'Contactar',
-
-  // Contacto
-  'contact.title': 'Contacto',
-  'contact.description': 'No dudes en ponerte en contacto para cualquier consulta:',
-
-  // Modal
-  'modal.title': 'Detalles del Proyecto',
-
-  // Timeline
-  'timeline.upcoming': 'Próximos Eventos',
-  'timeline.conferences': 'Conferencias',
-
-  // Timeline - Fechas de proyectos
-  'timeline.lithops.date': '2022 — 2024',
-  'timeline.soundless.date': '2024 — 2025',
-  'timeline.pyrun.date': '2025 — 2026',
-  'timeline.literag.date': 'Mediados 2025 — 2026',
-  'timeline.klipso.date': 'Inicio 2026',
-  'timeline.core.date': '2026',
-
-  // Timeline - Conferencias
-  'timeline.euroscipy.date': 'Agosto 2025',
-  'timeline.pycon.date': 'Octubre 2025',
-  'timeline.pycon': 'PyConEs 2025',
-  'timeline.pycon.location': 'Sevilla, España • Keynote',
-  'timeline.euroscipy': 'EuroScipy 2025',
-  'timeline.euroscipy.location': 'Krakow, Polonia • Charla Técnica',
-
-  // Timeline - Klipso
-  'timeline.klipso.badge': 'Fase de Escalado',
-  'timeline.klipso.title': 'Klipso',
-  'timeline.klipso.description': 'Plataforma de clips virales con IA. Más de 2.5k clips generados para más de 50 creadores usando Whisper, Gemini y face tracking.',
-  'timeline.klipso.status': 'Producción Activa',
-
-  // Timeline - LiteRAG
-  'timeline.literag.title': 'LiteRAG',
-  'timeline.literag.description': 'Sistema Zero-LLM para GraphRAG. Reducción del 99% en costes mediante navegación algorítmica de grafos y cadenas de razonamiento.',
-
-  // Timeline - PyRun
-  'timeline.pyrun.title': 'PyRun Cloud',
-  'timeline.pyrun.description': 'Plataforma SaaS Full-Stack que automatiza el despliegue cloud para investigadores. De código a clúster activo en minutos.',
-
-  // Timeline - Lithops
-  'timeline.lithops.title': 'Lithops',
-  'timeline.lithops.description': 'Framework serverless multi-cloud. Orquesta más de 10k funciones paralelas en AWS, GCP y Azure sin cambios en el código.',
-
-  // Timeline - Soundless
-  'timeline.soundless.title': 'Soundless',
-  'timeline.soundless.description': 'Plataforma de ciencia ciudadana que correlaciona la contaminación acústica urbana con la salud del sueño. 50 participantes reales, recopilación de datos móvil + wearable.',
-
-  // Timeline - F1 Oracle
-  'timeline.f1.date': '2025',
-  'timeline.f1.title': 'F1 Oracle',
-  'timeline.f1.description': 'Motor de predicción de carreras de F1 en tiempo real usando LSTM. Predicción del ganador con 100% de precisión y MAE de ~2.3 posiciones en 2024.',
-
-  // Timeline - Core Contributions
-  'timeline.core.title': 'Contribuciones Open Source',
-  'timeline.core.description': 'Contribuciones open-source a Ollama, Gemini CLI, Dask CloudProvider y herramientas cloud-native.',
+  'contact.title': 'Hablemos',
+  'contact.description': '¿Te interesa un proyecto, colaborar en código abierto o conversar sobre tecnología? Escríbeme.',
+  'contact.close': 'Cerrar ventana de contacto',
+  'contact.copy': 'Copiar dirección de correo',
+  'contact.copied': 'Dirección de correo copiada',
+  'modal.title': 'Detrás del proyecto',
+  'modal.close': 'Cerrar detalles del proyecto',
+  'modal.error': 'No se han podido cargar los detalles. Cierra esta ventana y vuelve a intentarlo.',
+  'modal.loading': 'Cargando detalles del proyecto',
 };

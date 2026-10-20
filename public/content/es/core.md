@@ -1,28 +1,39 @@
-# Contribuciones Tecnológicas Centrales y Open Source
+# Código abierto — Cambios concretos, herramientas compartidas
 
-Mantengo un fuerte compromiso activo y productivo hacia el desarrollo del ecosistema Open Source y colaboraciones comunitarias descentralizadas. Paralelamente al avance e investigación individual de sistemas, canalizo mi dedicación en robustecer y extender componentes escalables interconectados (aportando mitigaciones en cuellos de botella y *bugs* algorítmicos complejos, así como dotando e implementando extensiones de lógica operativa formal) para orquestadores y *toolings* fundacionales altamente demandados y distribuidos globalmente.
+**Mi papel:** Contribuidor · **Enfoque:** Backends cloud, compatibilidad, integraciones y fiabilidad
 
-### Motor Analítico de Lenguajes Locales: Ollama
+Contribuyo cambios que mejoran herramientas existentes: ampliar un backend, resolver una integración o corregir un problema de compatibilidad. Los enlaces muestran qué propuse y si se integró, sin confundir un fork con una contribución aceptada por el proyecto original.
 
-[Ollama](https://github.com/ollama/ollama) representa un hito fundamental en el avance para la integración *offline* escalable y gestión de arquitecturas de modelos masivos de lenguaje (LLMs) nativamente implementadas localmente, capacitando accesibilidades computacionales sin precedentes mundialmente.
+*Estado comprobado en octubre de 2026. Las PR enlazadas son la referencia y pueden cambiar.*
 
-Mi aportación instrumental incidió específicamente atacando **optimizaciones crudas sobre *runtime bindings* de muy bajo nivel** implementados estrictamente a la base interna en el *pipeline* del ecosistema general encargado de provisionar y levantar en bloque recursos de modelaje e instrumentaciones en su ejecución paralela local elevando métricas latentes sobre accesos fríos.
+## Trabajo integrado en los proyectos originales
 
-### SDK y Orquestador de Entornos: Gemini CLI
+| Proyecto | Mi aportación | Evidencia |
+| :--- | :--- | :--- |
+| **Lithops** | Distribución de tareas con Kubernetes/RabbitMQ, backend Singularity y correcciones de ejecución | [#1170](https://github.com/lithops-cloud/lithops/pull/1170), [#1375](https://github.com/lithops-cloud/lithops/pull/1375), [#1424](https://github.com/lithops-cloud/lithops/pull/1424) |
+| **Lithops-HPC** | Cambios de soporte para la integración HPC | [#1](https://github.com/neardata-eu/lithops-hpc/pull/1) |
+| **Dask CloudProvider** | Soporte IBM Cloud/Code Engine, disco local, registros de contenedores y comandos personalizados | [#434](https://github.com/dask/dask-cloudprovider/pull/434), [#440](https://github.com/dask/dask-cloudprovider/pull/440), [#450](https://github.com/dask/dask-cloudprovider/pull/450) |
+| **Ollama** | Soporte de imágenes WebP en la aplicación de escritorio | [#12973](https://github.com/ollama/ollama/pull/12973) |
+| **Gemini CLI** | Corrección del error `URL.parse` en versiones de Node.js anteriores a la 22 | [#13698](https://github.com/google-gemini/gemini-cli/pull/13698) |
 
-[Gemini CLI](https://github.com/google-gemini/gemini-cli) opera en rol de plataforma orquestadora e interconexión operativa consolidando capacidades masivas sobre API en terminal, erigiendo conductos dinámicos posibilitando integraciones profundas automatizadas de IA bajo desarrollos corporativos a niveles de terminal shell para ecosistemas lógicos e implementaciones asíncronas de la red subyacente de procesadores multi-modales Gemini.
+### Conectar Dask con IBM Code Engine
 
-Lideré iteraciones *Pull Requests* reorientadas y ancladas íntegramente optimizando componentes para la **capa orquestadora *tools calling dispatchers*** — reevaluando en profundidad los encadenamientos operacionales que unifican mecánicamente las delegaciones algorítmicas delegando comandos sistémicos *on-the-fly* integrando con procesos masivos sobre utilidades delegadas asíncronas conectadas en los potentes recursos IA, fortificando radical y ampliamente utilidades para instrumentaciones ágiles sobre *agentes autónomos*.
+Este trabajo añade una plataforma de contenedores serverless a las opciones de gestión de clústeres de Dask CloudProvider. Incluye configuración del backend, despliegue de scheduler/workers y mejoras posteriores para imágenes, comandos y almacenamiento local. Es un ejemplo de cómo integrar una herramienta Python consolidada con otro entorno de ejecución.
 
-### Extensiones CloudProvider para Analítica en Python: Integración de Dask + IBM Code Engine
+### Las correcciones pequeñas también importan
 
-[Dask](https://github.com/dask/dask-cloudprovider) es el pilar estándar *de facto* más extendido mundialmente abarcando paralelizadores nativos escalares en procesamiento analítico Python *multi-core scale*. Sus derivadas estructurales de extensiones permean integraciones híbridas a macro y mega redes CloudProvider.
+Admitir WebP en Ollama y resolver una incompatibilidad de Node.js en Gemini CLI permite que más personas utilicen los flujos existentes. Son cambios concretos que combinan la comprensión de una base de código consolidada con el proceso de revisión del proyecto original.
 
-Dirigí e implementé *from scratch* (desde su inicio) un **backend estructuralmente novedoso (Cloud Engine Backend)** dotando soporte y compatibilidad pura de interconexión orquestando componentes de workers efímeros asíncronamente implementados hacia clústeres empresariales kubernetes-gestionados IBM Cloud Code Engine sin sobrecapas requeridas para los desarrolladores administradores limitándoles o forzándoles a parametrizaciones locales *nodes cluster managers*. Empíricamente las constataciones probaron superioridades operativas y rentabilidades latentes masivamente en coste o transaccional pre-calentamiento *spin-up* compitiendo rotundamente por encima frente a provisionadores *SaaS* de renombre Coiled.
+## Propuestas abiertas
 
-### Iniciativas OpenClaw System
+| Proyecto | Cambio propuesto | Estado |
+| :--- | :--- | :--- |
+| **GitHub MCP Server** | Rechazar toolsets desconocidos cuando la validación estricta está activada — [#2184](https://github.com/github/github-mcp-server/pull/2184) | Abierta; no integrada |
+| **Rechunker** | Añadir un ejecutor Lithops para transformar arrays fragmentados — [#152](https://github.com/pangeo-data/rechunker/pull/152) | Abierta; no integrada |
 
-Desarrollo, revisión y ampliación focalizándome operísticamente hacia robustez central (*core components*) en arquitecturas basadas extensivamente sobre *orchestration bindings*, subsanando asfixias analíticas y estructuralizando conectores transaccionales eficientes sobre *cloud-deployments pipelines* masivamente distribuidos en *micro-servers containers*.
+## Otras propuestas y experimentos
 
-### Tecnologías Aplicadas
-`Go` · `TypeScript` · `Python` · `Kubernetes` · `Docker`
+- **OpenClaw:** propuse correcciones de una [importación del SDK de plugins publicado](https://github.com/openclaw/openclaw/pull/40064) y de [avisos falsos de identificadores de plugin duplicados](https://github.com/openclaw/openclaw/pull/42192). Ambas PR están cerradas sin merge; son propuestas enviadas, no funcionalidades integradas.
+- **MXFaaS:** mi [fork de investigación](https://github.com/macarronesc/mxfaas) incluye experimentos de ancho de banda y lanzamiento en ráfaga sobre el proyecto original de recursos compartidos. Esto no implica autoría del artículo original de ISCA 2023.
+
+**Tecnologías utilizadas en estas aportaciones:** Python · Go · TypeScript · Kubernetes · RabbitMQ · Singularity · IBM Code Engine · Dask · MCP

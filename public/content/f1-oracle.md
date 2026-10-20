@@ -1,43 +1,24 @@
-# F1 Oracle — Real-Time AI Race Prediction Engine
+# F1 Oracle — Learning race rankings from lap-by-lap data
 
-**F1 Oracle** (Project F.O.R.M.U.L.A.) is an advanced machine learning research project I conceptualized, engineered, and trained entirely from scratch. Designed to forecast Formula 1 race outcomes, the system moves beyond traditional static statistics by leveraging Recurrent Neural Networks (LSTM) to capture the inherently sequential, lap-by-lap dynamics of motor racing.
+**My role:** Solo developer & ML researcher · **Context:** Personal experiment, also known as Project F.O.R.M.U.L.A.
 
-As a solo, passion-driven research initiative, I developed the entire pipeline: from historical data ingestion (1950–2024) and complex feature engineering, to the design of a custom AI architecture and a real-time live prediction engine.
+F1 Oracle explores whether sequential race data can help predict a Formula 1 finishing order. I built the pipeline from historical-data preparation to an LSTM-based ranking model and a FastF1-connected prediction workflow.
 
-### The Challenge: Why Traditional Models Fail in F1
-Formula 1 is a highly dynamic and chaotic environment. A single lap directly influences the next—tire degradation compounds, pit stop strategies unfold, and unpredictable safety cars reset the field. Traditional machine learning models evaluate data points independently, failing to capture this chronological causality.
+## The modeling problem
 
-To solve this, I architected an **LSTM (Long Short-Term Memory)** network equipped with dynamic masking layers to process variable-length race sequences without introducing zero-padding artifacts.
+A race is a sequence: gaps, pit stops and changes in pace affect what happens next. Rather than treating each snapshot independently, the model processes lap sequences and learns relative driver rankings.
 
-### 🛠️ Key Engineering Contributions
+## What I implemented
 
-#### 1. Custom "Learning-to-Rank" Loss Function
-Traditional regression models try to predict absolute finishing positions (e.g., predicting 1.5 vs 2.0), which is fundamentally flawed for race environments. I engineered a **Custom Pairwise Hinge Loss** function tailored for F1. Instead of predicting absolute positions, the model learns the relative ranking between any two drivers (optimizing to answer: *"Will driver A finish ahead of driver B?"*). This dramatically improved the model's contextual awareness and positional accuracy.
+- **Feature engineering:** vectorized Pandas transformations for gaps, relative pace, pit-stop effects and race-context signals.
+- **Sequence handling:** masking and padding for variable-length race histories.
+- **Ranking objective:** a pairwise hinge-loss formulation that learns whether one driver should finish ahead of another, rather than only regressing isolated finishing positions.
+- **Prediction workflow:** FastF1 integration applies the same feature transformations to incoming race data before producing an updated ranking.
 
-#### 2. Advanced Contextual Feature Engineering
-I built a vectorized feature extraction pipeline utilizing Pandas to generate 15+ real-time metrics per lap. Key engineered features include:
-- **Spatial Deltas:** Millisecond-accurate gaps to the race leader and the car immediately ahead.
-- **Safety Car Proxy:** An anomaly detection algorithm that identifies safety car periods by comparing rolling lap averages against historical race paces.
-- **Strategic Impact:** Cumulative pit-stop duration tracking to evaluate real-time strategic advantages.
+## Evaluation focus
 
-#### 3. Real-Time Live Predictor
-I didn't want the model to just work on historical CSVs. I engineered an asynchronous, real-time prediction pipeline integrating the **FastF1 API**. During a live Grand Prix, the system:
-- Ingests live telemetry every 5 minutes (starting from lap 16).
-- Applies the exact same feature engineering transformations on the fly.
-- Feeds padded sequences into the pre-trained LSTM.
-- Outputs a probabilistic, ranked leaderboard of the final race outcome.
+Useful measures include ranking error, Spearman correlation and winner prediction at a stated point in a race. They answer different questions: predicting late in a race is not the same task as making a pre-race forecast.
 
-### 📊 Performance & Research Impact
+Evaluation is exploratory. A reproducible quantitative comparison needs the exact train/test split, evaluated races, prediction lap, handling of retirements and comparison baselines. The project focuses on that modeling problem rather than promising a guaranteed race forecast.
 
-Trained on tens of millions of individual lap times and evaluated strictly on the 2024 season, the model achieved remarkable results:
-
-| Metric | Result |
-|--------|--------|
-| **Winner Prediction Accuracy** | 100% |
-| **Mean Absolute Error (Rank)** | ~2.3 positions |
-| **Spearman Rank Correlation** | 0.96 |
-
-The model demonstrates exceptional performance on standard dry races and dense midfield battles, effectively proving that deep learning architectures can out-predict traditional motorsport statistical analyses.
-
-### 💻 Technologies & Stack
-`TensorFlow/Keras` · `Python` · `FastF1 API` · `Pandas` · `NumPy` · `Scikit-Learn` · `Jupyter`
+**Stack:** Python · TensorFlow/Keras · FastF1 · Pandas · NumPy · Scikit-learn · Jupyter

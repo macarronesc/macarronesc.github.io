@@ -11,7 +11,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test": "node scripts/check-content.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

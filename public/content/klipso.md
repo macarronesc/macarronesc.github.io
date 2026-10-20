@@ -1,43 +1,67 @@
-# Klipso — AI-Powered Viral Clip Platform
+# Klipso — AI-powered short-form video creation
 
-[![Live in Production](https://img.shields.io/badge/Live-klipso.vercel.app-000000?style=for-the-badge&logo=vercel)](https://klipso.vercel.app/)
+**My role:** Creator & full-stack developer · **Status:** Actively developed personal product
 
-**Klipso** is a production-grade, full-stack SaaS platform I architected and developed from the ground up in my spare time. It autonomously transforms long-form YouTube videos into high-retention, vertical clips (9:16) optimized for TikTok, Reels, and Shorts. 
+[Explore Klipso](https://klipso.dev)
 
-By orchestrating a complex, multi-modal AI pipeline entirely in the cloud, Klipso abstracts away hours of tedious manual video editing, allowing content creators to generate viral assets with a single click.
+Klipso turns long-form YouTube videos into captioned, speaker-aware clips for **TikTok, Instagram Reels and YouTube Shorts**. It brings highlight selection, reframing, rendering and delivery into one workflow so creators can spend less time assembling edits manually.
 
-### The Multi-Modal AI Pipeline
+I built the product end to end and continue to improve its AI pipeline, reliability, efficiency and user experience.
 
-At the core of Klipso is an advanced, distributed inference engine that fuses audio processing, natural language understanding, and computer vision to replicate human editing decisions:
+## Product milestones
 
-1. **Robust Ingestion:** A custom extraction layer utilizing `yt-dlp` with advanced proxy rotation and IP masking to reliably fetch 1080p source streams while bypassing dynamic bot protections.
-2. **Acoustic & Semantic Analysis:** Audio is processed through OpenAI's **Whisper** for word-level timestamped transcription. The output is fed into **Google Gemini**, which acts as a narrative reasoning engine to identify emotional shifts, punchlines, and high-retention "hooks."
-3. **Speaker-Aware Face Tracking:** The platform solves the complex problem of dynamic framing by fusing two AI modalities. **PyAnnote Audio** performs speaker diarization (identifying *who* is speaking and *when*), while **MediaPipe** performs spatial face detection. A custom deterministic algorithm maps the active speaker's audio signature to their visual bounding box.
-4. **Cinematic Rendering:** Instead of static cuts, the pipeline calculates smooth camera pans using mathematical interpolation. **FFmpeg** executes the final hardware-accelerated render, applying the dynamic crop, upscaling the output to 1080×1920 using Lanczos filtering, and burning in stylized, creator-centric subtitles.
+| Users | Clips generated | Generated video |
+| :--- | :--- | :--- |
+| **100+** | **1,000+** | **14+ hours** |
 
-### Cloud-Native Architecture
+*Creator-reported milestones, October 2026. Users are not a paying-subscriber count; generated video is output duration, not source footage processed.*
 
-To support heavy GPU workloads and ensure a seamless user experience, I designed a highly scalable, event-driven serverless architecture:
+## How it works
 
-* **Frontend (React 19 & Vite):** A modern, highly responsive SPA utilizing Tailwind CSS and Framer Motion. It features a complete user dashboard, real-time job polling, and comprehensive internationalization (i18n) across 7 languages.
-* **Serverless API (Vercel):** Python-based serverless functions handle API routing, secure JWT authentication via Firebase, and asynchronous webhook processing.
-* **Distributed Job Queue:** Firebase Realtime Database acts as the central nervous system, handling atomic task locking, distributed job enqueuing, and real-time state synchronization between the frontend and the remote GPU workers.
-* **GPU Compute Cluster:** The heavy AI inference tasks are asynchronously dispatched to a fleet of cloud GPUs (NVIDIA T4s), ensuring high throughput and isolated execution environments.
-* **Edge Storage:** Processed artifacts are streamed directly to **Cloudflare R2** (S3-compatible), leveraging zero-egress fees and providing users with low-latency, pre-signed download URLs.
+```text
+Video → Captions / Whisper → Gemini highlight selection
+      → Speaker diarization + face tracking
+      → Single-pass FFmpeg render → Cloudflare R2 → Creator dashboard
+```
 
-### Engineering Highlights & Monetization
+- **Transcription and selection:** reuse native captions when available, with Whisper as a fallback. Gemini proposes candidate highlights from the transcript.
+- **Speaker-aware framing:** combine PyAnnote diarization with MediaPipe face detection to plan the vertical crop around the active speaker.
+- **Rendering:** fuse crop, optional upscale, subtitles and branded outro into one FFmpeg filter graph and encoder pass. Subtitles are drawn at the final output resolution.
+- **Delivery:** upload clips to Cloudflare R2 and expose previews and signed download links in the dashboard.
 
-Beyond the AI, I engineered robust business logic to handle production traffic:
-* **Atomic Credit System:** Implemented a reliable credit-based economy. Credits are reserved atomically via Firebase transactions upon job submission and only finalized upon successful GPU rendering, guaranteeing users never lose credits to infrastructure faults.
-* **Idempotent Payment Webhooks:** Fully integrated with **Stripe** for one-time packages and recurring monthly subscriptions. The backend employs strict idempotency keys to handle Stripe webhooks, preventing race conditions or duplicate credit grants.
-* **Fault Tolerance:** Built a self-healing queue system that automatically detects stalled jobs, clears deadlocks, and alerts the support team via integrated Brevo email notifications with sanitized execution logs.
+## What I built
 
-### Real-World Traction
+**Product and frontend.** React/TypeScript interface, authentication, video submission, clip history, previews, downloads and seven-language support. Active jobs can reattach after a refresh, and progress reflects real backend stages rather than a fabricated percentage.
 
-Klipso is not just a proof-of-concept; it is a fully operational business actively used by creators and marketing agencies:
-- **2,500+** viral clips successfully generated in production.
-- **50+** active, recurring users.
-- Generating automated revenue through processed Stripe subscriptions.
+**Processing and infrastructure.** Python serverless API on Vercel, Firebase-backed job coordination and asynchronous NVIDIA T4 workers on Kaggle. The design separates submission, dispatch, processing, delivery and terminal status updates.
 
-### Technologies
-`React 19` · `TypeScript` · `Python` · `Serverless` · `OpenAI Whisper` · `Gemini API` · `MediaPipe` · `PyAnnote` · `FFmpeg` · `Firebase` · `Stripe` · `Cloudflare R2`
+**Credits and billing.** Firebase transactions reserve credits at submission, with finalization after successful delivery and refunds on failure paths. Stripe integration supports payments and subscriptions; idempotent handling protects against repeated webhook events.
+
+**Operations and measurement.** Session verification, periodic reconciliation, retryable webhooks, regression tests and frontend/backend funnel events. Observability is best-effort so analytics failures do not determine job or credit state.
+
+## Measured engineering improvements
+
+The October 2026 optimization work targeted repeated computation and failure recovery, not just new features.
+
+| Area | Before → after | Why it matters |
+| :--- | :--- | :--- |
+| Encoder passes per vertical clip | **4 → 1** | Less repeated work and fewer re-encoding stages |
+| Worker dependency installation | **188.8s → 25.1s** | Avoids reinstalling the GPU image's matched PyTorch/CUDA stack |
+| Post-processing, three clips | **264.2s → 102.6s** | Fused render graph reduces processing overhead |
+| Worker elapsed time to completion webhook | **548.4s → 276.6s** | About 2× faster in the captions-enabled comparison |
+| Whisper-fallback worker elapsed time | **548.4s → 347.6s** | About 1.6× faster in the documented fallback run |
+| Queue reconciliation | **60-second checks** | Detects divergence from actual worker state and recovers resources |
+
+**Measurement scope:** the pipeline comparison used the same video and options—three vertical clips, upscale, subtitles and a free-user outro—with two post-change production runs. Dependency installation was measured separately on a T4 runtime. These are documented engineering comparisons, not fleet-wide medians or guaranteed user wait times. Queueing and dispatch add to processing time, and failure recovery uses different grace periods for different states.
+
+Output bitrate increased from roughly 2 to 8 Mbps, with subtitles rendered at 1080×1920. That is a bitrate and rendering change—not a measured “4× quality” score—and increases storage per clip-second.
+
+## Improving the experience around the AI
+
+- Preserve a pasted video URL through signup and login.
+- Restore active job tracking after a page refresh.
+- Make email-verification status update without a full reload.
+- Provide keyboard-operable dialogs, mobile navigation and localized errors.
+- Instrument the path from signup to clip delivery without claiming an engagement uplift that the available sample cannot establish.
+
+**Stack:** React · TypeScript · Python · Vercel · Kaggle/T4 · Whisper · Gemini · PyAnnote · MediaPipe · FFmpeg · Firebase · Cloudflare R2 · Stripe · PostHog

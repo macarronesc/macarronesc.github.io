@@ -1,30 +1,28 @@
-# Ciclos de Conferencias y Diseminación Tecnológica
+# Charlas técnicas — Llevar la investigación cloud a la práctica
 
-La diseminación del conocimiento técnico y la investigación empírica constituye un pilar central de mi práctica profesional como investigador en sistemas distribuidos. Participo asiduamente como conferenciante en congresos y cumbres tecnológicas internacionales de primer nivel, destilando paradigmas de alta complejidad relacionados con orquestación abstracta global escalable, infraestructuras *serverless multi-cloud* y desarrollos de topologías algorítmicas, democratizándolos formalmente para integrarlos accesibles al gran ecosistema de desarrolladores y arquitectos *software*.
+**Mi papel:** Ponente · **Enfoque:** Python distribuido, serverless y datos científicos
 
-### PyConEs 2025 — Sevilla, España
+Comparto lo aprendido al desarrollar infraestructura de investigación: cómo ejecutar Python paralelo en distintos entornos y acceder a datos científicos sin preprocesamiento innecesario. Mi objetivo es conectar ideas de arquitectura con herramientas que otros desarrolladores puedan utilizar.
 
-**Conferencia Central**: *Programación Paralela Serverless Multi-Cloud en Python*
+## PyConES 2025 · Sevilla, España
 
-Exposición integral evaluando profundamente al ecosistema *Lithops* sirviendo en su estatus de motor computacional distribuido capaz de asimilar transacciones lógicas en bloques puros desde origen, habilitando implementaciones para codificadores paralelizadores sin acorralarlos sobre exigencias adaptativas en *Application Programming Interfaces* propietarios (vendor lock-ins). Ámbitos cubiertos por el marco plenario:
+**Charla:** *Multi-Cloud Serverless Parallel Programming in Python (Lithops)*
 
-- Operativa interna funcional subyacente abstracta demostrada para compilación sobre inyecciones de código base nativo transpuestos sin barreras y paralelamente orquestados en los portafolios masivos de Amazon *Lambda*, *Cloud Functions/Run* Google, orquestadores empresariales nativos Kubernetes, e IBM *Code Engine*.
-- Instrumentación analítica masiva documentada con flujos escalables paralelos instanciando más de 1.000 procesadores de hilos lógicos operativizados sub-simultáneamente a latencias ínfimas por debajo de límites temporales absolutos (*cold-start barrier breakthroughs* inferiores a 100 milisegundos netos).
-- Evaluaciones y revisiones técnicas exhaustivas y pruebas iterales prácticas con casos de éxitos computacionales rigurosos, sobre exigentes instrumentaciones ligadas a procesos estadísticos estocásticos de tipo *Monte Carlo* y transformadas matemáticas iterables.
-- Formulación algorítmica y paradigma consolidado frente operativas y programaciones multi-cloud puras: convergencia unitaria lógica adaptable infraestructural universal (*write once, scale anywhere distributed computations*).
+[Perfil oficial del ponente y sesión](https://pretalx.com/pycones-2025/speaker/TVZK37/)
 
-Múltiples perfiles multidisciplinares asistiendo a la cúpula tecnológica (científicos de modelado Big Data, DevOps arquitectónicos e investigadores científicos paralelos) atraídos explícitamente y en común para solventar restricciones logísticas tradicionales al aplicar cálculos masivos de nubes sin lidiar permanentemente lógicas manuales extenuadas acopladas de los infraestructores cloud en la base subyacente.
+La sesión presentó Lithops como modelo de programación para cargas paralelas entre proveedores cloud y tipos de infraestructura. Abordó abstracción de backends, distribución de tareas y uso práctico de Python serverless sin reescribir la aplicación alrededor de las APIs de un solo proveedor.
 
-### EuroScipy 2025 — Polonia
+## EuroSciPy 2025 · Kraków, Polonia
 
-**Ponencia Investigadora Especializada**: *Procesamiento de Datos Cloud-Optimized Estructurados Transaccionales vía Python*
+**Charla:** *Processing Cloud-Optimized Data in Python (Dataplug)*
 
-Mi intercesión pautó centrarse cardinalmente para atajar operativamente un estrangulamiento limitativo generalizado detectado empíricamente a lo ancho en bases referidas al alto flujo para ciencia en datos: restricciones severas logarítmicas provocadas por modelizaciones pre-estructuralistas previas costosas hacia almacenamientos analógicos operando nubes a altísima latencia general con magnitudes Petabytes. El enfoque principal erigido sobre exposiciones abordaron en la solución escalativa open base referida como **Dataplug**: librería central innovadora logrando asombrosas parcelaciones computacionales extrayendo secciones operacionales sin requerimientos imperativos masivos para sobreprocesar copias espejo ineficaces (duplicidades on-demand zero storage mapping compute slices).
+[Perfil oficial del ponente y sesión](https://pretalx.com/euroscipy-2025/speaker/TVZK37/)
 
-Sustratos tecnológicos abordados de alta exigencia:
-- Paradigma fundacional estructural al abordar las transformativas integraciones formales Cloud-Optimized Formats (ZARR, COPC, COG) frente a transacciones transespaciales paralelizables.
-- Metódicas para segmentar indexados virtuales al-vuelo limitando inmensas capas formativas estructurales para arquitecturas monolíticas legadas (*legacy dumps*: FASTQ genómicos, modelos terrestres pesados LiDAR, masivos formatos moleculares CSV/imzML).
-- Demostraciones analítico-transaccionales exhaustivas orquestando en tándem Dask Cluster con particionadores Dataplug procesadores lógicos sobre modelados cartográficos e instrumentales bioquímicos en clúster base.
-- Métricas, tableros observacionales reportados concluyendo reducciones y mitigaciones económicas sobre impacto puro transaccional ahorrando exponencialidades con decrecimientos monetarios del 65% o pico superior superando transacciones estáticas arcaicas habituales.
+La sesión exploró el acceso a datos científicos en almacenamiento de objetos: formatos cloud-optimized, particionado, lectura por rangos de bytes y el enfoque de Dataplug para preparar análisis paralelos. El énfasis estuvo en el acceso a los datos que alimentan las cargas distribuidas, no solo en la capa de cómputo.
 
-La disertación magistral quedó agendada y seleccionada estructuralmente entre las mesas redondas focales top-tier sobre *Herramientas Computacionales e Infraestructura Avanzada Central Python Científico (Scientific Core Tools Track)*.
+## Investigación publicada relacionada
+
+- **IEEE ICNP 2024:** [Enhancing HPC with Serverless Computing: Lithops on MareNostrum5](https://doi.org/10.1109/ICNP61940.2024.10858564).
+- **IEEE ICDCSW 2025:** [Bringing Serverless Functions Closer To Citizen Science Mobile Applications](https://doi.org/10.1109/ICDCSW63273.2025.00054).
+
+Además de estas charlas y publicaciones, mi investigación en curso incluye LiteRAG, enviado a EMNLP 2026.

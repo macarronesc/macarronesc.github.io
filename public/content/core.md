@@ -1,28 +1,39 @@
-# Core Open Source Contributions
+# Open source — Specific changes, shared tools
 
-I am a staunch advocate for open-source ecosystems and collective software engineering. Beyond architecting proprietary platforms, I actively contribute upstream to foundational computational tools and frameworks—submitting critical patches, resolving complex bottlenecks, and implementing new features for widely adopted developer utilities.
+**My role:** Contributor · **Focus:** Cloud backends, compatibility, integrations and reliability
 
-### Ollama
+I contribute changes that make existing tools more useful: extend a compute backend, fix an integration or resolve a compatibility problem. The links below show what I submitted and whether it was merged, rather than treating every fork as an upstream contribution.
 
-[Ollama](https://github.com/ollama/ollama) is one of the most widely deployed engines for executing large language models locally. With millions of active users globally, it abstracts the complexity of downloading, running, and managing LLMs securely on personal hardware.
+*Status checked in October 2026. The linked PRs are the source of truth and may change.*
 
-My contributions specifically targeted **low-level runtime optimizations** within the core inference pipeline. I overhauled performance characteristics for model loading and critical execution paths, measurably reducing latency and improving the baseline user experience.
+## Merged upstream work
 
-### Gemini CLI
+| Project | What I contributed | Evidence |
+| :--- | :--- | :--- |
+| **Lithops** | Kubernetes/RabbitMQ work distribution, a Singularity backend and execution fixes | [#1170](https://github.com/lithops-cloud/lithops/pull/1170), [#1375](https://github.com/lithops-cloud/lithops/pull/1375), [#1424](https://github.com/lithops-cloud/lithops/pull/1424) |
+| **Lithops-HPC** | Changes supporting the HPC integration | [#1](https://github.com/neardata-eu/lithops-hpc/pull/1) |
+| **Dask CloudProvider** | IBM Cloud/Code Engine support, local-disk settings, container-registry support and custom commands | [#434](https://github.com/dask/dask-cloudprovider/pull/434), [#440](https://github.com/dask/dask-cloudprovider/pull/440), [#450](https://github.com/dask/dask-cloudprovider/pull/450) |
+| **Ollama** | WebP image support in the desktop app | [#12973](https://github.com/ollama/ollama/pull/12973) |
+| **Gemini CLI** | Fix the `URL.parse` error affecting Node.js versions below 22 | [#13698](https://github.com/google-gemini/gemini-cli/pull/13698) |
 
-[Gemini CLI](https://github.com/google-gemini/gemini-cli) is Google's official command-line interface for programmatic interaction with Gemini models. It empowers developers with terminal-native access to Gemini's advanced capabilities, encompassing code generation, static analysis, and multi-modal prompting.
+### Connecting Dask to IBM Code Engine
 
-I architected and merged crucial Pull Requests focused on the **tool orchestration layer**. This work fundamentally improved how the CLI invokes, synchronizes, and manages external tool execution during complex, LLM-driven autonomous workflows—directly elevating the developer experience for agentic coding tasks.
+This work adds a serverless container platform to Dask CloudProvider's cluster-management options. It includes backend configuration, scheduler/worker deployment and later improvements for custom images, commands and local storage. It is a concrete example of integrating an established Python tool with a different execution environment.
 
-### Dask CloudProvider — IBM Code Engine Backend
+### Small compatibility fixes matter
 
-[Dask](https://github.com/dask/dask-cloudprovider) is the industry standard Python library for parallel and distributed computing. The CloudProvider extension facilitates the dynamic provisioning of Dask clusters across diverse cloud infrastructures.
+Supporting WebP in Ollama and removing a Node.js API incompatibility in Gemini CLI make existing workflows usable for more people. These focused patches combine understanding an established codebase with delivering a change through its upstream review process.
 
-I designed and engineered a **completely new backend logic** integrating Dask with IBM Cloud Code Engine's managed Kubernetes environment. This backend provisions distributed Dask worker nodes as highly elastic serverless containers, entirely abstracting cluster management from the end user. Rigorous benchmarking demonstrated that this architecture outperforms commercial managed alternatives, such as Coiled, in both cluster provisioning velocity and sustained cost efficiency.
+## Open proposals
 
-### OpenClaw
+| Project | Proposed change | Status |
+| :--- | :--- | :--- |
+| **GitHub MCP Server** | Fail closed on unknown toolsets when strict validation is enabled — [#2184](https://github.com/github/github-mcp-server/pull/2184) | Open; not merged |
+| **Rechunker** | Add a Lithops executor for chunked-array transformation — [#152](https://github.com/pangeo-data/rechunker/pull/152) | Open; not merged |
 
-I have also contributed extensively to cloud-native connectors and infrastructure orchestration tooling, successfully resolving critical architectural bottlenecks within container deployment pipelines and data ingestion services.
+## Other submitted work and experiments
 
-### Technologies
-`Go` · `TypeScript` · `Python` · `Kubernetes` · `Docker`
+- **OpenClaw:** submitted fixes for a [published plugin-SDK import](https://github.com/openclaw/openclaw/pull/40064) and [false duplicate plugin-ID warnings](https://github.com/openclaw/openclaw/pull/42192). Both PRs are closed without an upstream merge; they are submitted work, not merged features.
+- **MXFaaS:** my [research fork](https://github.com/macarronesc/mxfaas) includes bandwidth and burst-launch experiments based on the original resource-sharing project. This does not imply authorship of the original ISCA 2023 paper.
+
+**Technologies used in these contributions:** Python · Go · TypeScript · Kubernetes · RabbitMQ · Singularity · IBM Code Engine · Dask · MCP

@@ -1,45 +1,36 @@
-# LiteRAG: Búsqueda Nativa en Grafos Adaptativa
+# LiteRAG — Recuperación en grafos sin navegación guiada por LLMs
 
-**LiteRAG** (Adaptive Graph-Native Search) es un nuevo framework de GraphRAG diseñado para resolver el problema de los "costes prohibitivos" en los sistemas de recuperación basados en grafos. Mientras que los estándares de la industria, como Microsoft GraphRAG, dependen de costosos procesos de "Map-Reduce" o navegación agéntica guiada por LLMs, LiteRAG introduce un **sistema de navegación Zero-LLM** impulsado por algoritmos matemáticos.
+**Mi papel:** Diseño del framework y autor de la implementación · **Estado:** Investigación; artículo enviado a EMNLP 2026
 
-El resultado es un sistema que mantiene una latencia constante ($O(1)$) y costes de sub-céntimo independientemente del tamaño del dataset, sin sacrificar la precisión en tareas de razonamiento multihilo (multi-hop).
+📄 [Leer el artículo: LiteRAG: Cost-Efficient Graph-Based Retrieval-Augmented Generation](https://arxiv.org/abs/2609.10239)
 
-> 📄 **Estado Académico:** Paper de investigación enviado a **EMNLP 2026**. Yo arquitecté el framework y soy el autor del 100% del código de la implementación.
+LiteRAG explora una pregunta práctica: **¿puede la recuperación basada en grafos responder a consultas multi-hop sin pedir a un modelo que decida cada paso del recorrido?** Diseñé e implementé un framework que traslada la navegación a algoritmos para reducir el coste de recuperación y conservar relaciones útiles en el contexto enviado al modelo de respuesta.
 
-### 🚀 El Salto en Rendimiento
-Comparativa contra el SOTA (Estado del Arte) industrial actual (Microsoft GraphRAG DRIFT) utilizando un corpus de 1.280 documentos:
+«Sin LLM» se refiere a la **fase de navegación**, no significa que la generación de respuestas, la construcción del grafo o la evaluación nunca utilicen modelos.
 
-| Métrica | LiteRAG (Ours) | GraphRAG (DRIFT) | Mejora |
-| :--- | :--- | :--- | :--- |
-| **Coste Operativo** | **€0.01** | €25.28 | **Reducción del 99.9%** |
-| **Latencia End-to-End** | **1.42s** | 142.04s | **100x más rápido** |
-| **Consumo de Tokens** | **2,291** | 6,441,013 | **~2,800x más eficiente** |
-| **Precisión (Stotal)** | **0.798** | 0.657 | **+21.4% superior** |
+## Mis aportaciones técnicas
 
----
+- **Expansión semántica adaptativa:** guiar el recorrido por relevancia respecto a la consulta, en lugar de aplicar siempre un vecindario de tamaño fijo.
+- **Filtrado de hubs por comunidad:** penalizar nodos genéricos muy conectados que provocan deriva semántica, manteniendo conexiones útiles del dominio.
+- **Serialización de cadenas de relaciones:** representar el contexto como cadenas entidad–relación, no solo como fragmentos de texto desconectados.
+- **Herramientas de evaluación:** comparar coste, latencia y calidad de respuesta con otros sistemas basados en grafos.
 
-### 🧠 Contribuciones Arquitectónicas Clave
+## Resultados de investigación reportados
 
-#### 1. Exploración de Grafos Paralela Zero-LLM
-La innovación principal de LiteRAG es trasladar la "inteligencia" del recorrido del grafo del LLM al propio motor de grafos.
-*   **Umbral Semántico Dinámico:** En lugar de un radio de búsqueda fijo, LiteRAG calcula una frontera de expansión basada en la "fuerza de la señal" semántica de la consulta del usuario.
-*   **Filtrado de Hubs por Comunidad:** Una función de penalización personalizada ($P_{hub}$) identifica y evita "hubs genéricos" (como la palabra "Sistema") que causan deriva semántica, protegiendo a la vez los "hubs de tópico" vitales para el dominio local.
+El resumen del proyecto recoge esta comparación con **Microsoft GraphRAG DRIFT sobre un corpus de 1.280 documentos**:
 
-#### 2. Cadenas de Razonamiento Serializadas (Reasoning Chains)
-Los sistemas RAG tradicionales saturan la ventana de contexto con fragmentos de texto inconexos. LiteRAG agrega los subgrafos recorridos y los serializa en **Cadenas de Razonamiento** (ej., `Entidad A —[predicado]—> Entidad B`).
-*   **Densidad Lingüística:** Al proporcionar estructuras causales explícitas, reducimos la carga cognitiva en el mecanismo de atención del LLM.
-*   **Compresión de Contexto:** LiteRAG supera a sus competidores usando solo ~2,000 tokens de contexto, mientras que otros requieren más de 100,000 tokens para alcanzar profundidades de razonamiento similares.
+| Métrica | LiteRAG | GraphRAG DRIFT |
+| :--- | :--- | :--- |
+| Coste operativo reportado | **0,01 €** | 25,28 € |
+| Latencia de extremo a extremo | **1,42s** | 142,04s |
+| Puntuación de evaluación, S_total | **0,798** | 0,657 |
 
-#### 3. Escalabilidad $O(1)$
-Al desacoplar la recuperación del tamaño global del grafo, LiteRAG mantiene una curva de latencia casi plana. Mientras que la latencia de los sistemas tradicionales explotó de 8s a 162s ($O(N)$) al crecer el dataset, LiteRAG se mantuvo estable en ~1.4s.
+En el intervalo evaluado de 40–1.280 documentos, LiteRAG mostró una curva de latencia casi plana. Es **un resultado observado en ese intervalo**, no una demostración de complejidad constante para grafos arbitrarios. Los costes y las puntuaciones pertenecen a esa configuración experimental; no representan precios universales por consulta ni garantías de precisión.
 
----
+## Por qué es relevante
 
-### 🛠️ Stack Tecnológico
-*   **Lógica:** Python, NetworkX (Algoritmos de Grafos).
-*   **ML & Embeddings:** PyTorch, Sentence-Transformers.
-*   **Base de Datos:** Neo4j (Indexación de Vectores + Grafos).
-*   **Evaluación:** LLM-as-a-Judge (Gemini 2.5 Flash Lite), ROUGE-L, Similitud de Coseno.
+La recuperación en grafos permite encontrar relaciones que una búsqueda por similitud puede omitir, pero la exploración guiada por LLMs encarece ese contexto. LiteRAG investiga otra distribución de tareas: los algoritmos seleccionan el contexto del grafo y un modelo puede utilizarlo para generar la respuesta.
 
-### 📈 Impacto en Producción
-LiteRAG se encuentra actualmente en producción, permitiendo consultas complejas en tiempo real sobre repositorios técnicos masivos donde el RAG basado en vectores fallaba y el GraphRAG agéntico era financieramente inviable.
+**Estado académico:** preprint disponible en arXiv; enviado a EMNLP 2026.
+
+**Stack:** Python · NetworkX · Neo4j · PyTorch · Sentence-Transformers · Evaluación mediante LLM

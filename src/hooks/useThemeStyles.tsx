@@ -27,7 +27,7 @@ export function useThemeStyles() {
   const cardThemes = useMemo(() => generateCardThemes(), []);
 
   return useMemo(() => {
-    const isCardDark = (i: number) => cardThemes[i];
+    const isCardDark = (i: number) => cardThemes[i] ?? false;
     const isEffDark = (i: number) => (dark ? !isCardDark(i) : isCardDark(i));
 
     // Reusable card style builders
