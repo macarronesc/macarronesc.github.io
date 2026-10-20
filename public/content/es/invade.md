@@ -2,7 +2,7 @@
 
 **Mi papel:** Desarrollador del videojuego · **Estado:** Proyecto personal en desarrollo activo
 
-[Explorar el repositorio](https://github.com/macarronesc/invade.io)
+[Ver en Google Play](https://play.google.com/store/apps/details?id=macarronesc.invadeio) · [Explorar el repositorio](https://github.com/macarronesc/invade.io)
 
 Invade.io es un **juego de estrategia territorial en tiempo real, pensado para móvil**, desarrollado con Godot 4. Captura bases, desplaza tropas y mejora tu ejército en una campaña centrada en la sensación de progreso.
 
@@ -28,6 +28,6 @@ Desarrollo los sistemas del juego y la experiencia móvil: combate, decisiones d
 
 ## Alcance actual
 
-La versión pública incluye juego individual y progreso local. Los servicios de las tiendas, el guardado cloud y las clasificaciones online **no están integrados**. Los paquetes Android y las compilaciones iOS de prueba no implican disponibilidad en Google Play, App Store o TestFlight.
+La versión pública incluye juego individual y progreso local. El guardado cloud y las clasificaciones online **no están integrados**. El workflow de iOS genera compilaciones de prueba para SideStore, no versiones para App Store o TestFlight.
 
 **Stack:** Godot 4 · GDScript · Android · Compilaciones iOS de prueba · GitHub Actions

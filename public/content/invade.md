@@ -2,7 +2,7 @@
 
 **My role:** Game developer · **Status:** Actively developed personal project
 
-[Explore the repository](https://github.com/macarronesc/invade.io)
+[View on Google Play](https://play.google.com/store/apps/details?id=macarronesc.invadeio) · [Explore the repository](https://github.com/macarronesc/invade.io)
 
 Invade.io is a **mobile-first, real-time territorial strategy game** built with Godot 4. Capture bases, send troops across the map and grow an army through a campaign designed around a steady sense of progression.
 
@@ -28,6 +28,6 @@ I develop both the game systems and the mobile experience: combat, enemy decisio
 
 ## Current scope
 
-The public version includes single-player gameplay and local progression. Store services, cloud saves and online leaderboards are **not integrated**. Android release packaging and iOS test builds do not imply availability on Google Play, the App Store or TestFlight.
+The public version includes single-player gameplay and local progression. Cloud saves and online leaderboards are **not integrated**. The iOS workflow produces test builds for SideStore, not App Store or TestFlight releases.
 
 **Stack:** Godot 4 · GDScript · Android · iOS test builds · GitHub Actions
